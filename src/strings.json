@@ -26,5 +26,15 @@
   "index.region_detail.out_of_data": {
     "cn": "该区域没有数据",
     "en": "No data for this region"
+  },
+  "data": {
+    "Raw Coal": {
+      "cn": "煤炭",
+      "en": "Raw Coal"
+    },
+    "Cleaned Coal": {
+      "cn": "清洗后的煤炭",
+      "en": "Cleaned Coal"
+    } // TODO: add more data keys
   }
 }
