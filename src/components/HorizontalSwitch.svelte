@@ -1,40 +1,40 @@
 <script>
-    import {flip} from "svelte/animate";
-    import {tweened} from "svelte/motion";
-    import {cubicInOut} from "svelte/easing";
-    import {onMount} from "svelte";
+    import {flip} from "svelte/animate"
+    import {tweened} from "svelte/motion"
+    import {cubicInOut} from "svelte/easing"
+    import {onMount} from "svelte"
 
-    export let years;
+    export let years
 
-    let current = years.length - 1;
+    let current = years.length - 1
 
     function calc(current) {
-        let middle = years.length * 120 / 2;
-        let left = (current + 1) * 120;
-        return middle - left + 60;
+        let middle = years.length * 120 / 2
+        let left = (current + 1) * 120
+        return middle - left + 60
     }
 
     const offset = tweened(calc(current), {
         duration: 300,
         easing: cubicInOut,
-    });
+    })
 
     function handle_key(e) {
         if (e.keyCode === 37 || e.keyCode === 39) {
-            e.preventDefault();
+            e.preventDefault()
             if (e.keyCode === 37) {
-                current = Math.max(0, current - 1);
+                current = Math.max(0, current - 1)
             } else {
-                current = Math.min(years.length - 1, current + 1);
+                current = Math.min(years.length - 1, current + 1)
             }
-            $offset = calc(current);
+            $offset = calc(current)
         }
     }
 
     onMount(() => {
-        window.addEventListener("keyup", handle_key);
+        window.addEventListener("keyup", handle_key)
         return () => {
-            window.removeEventListener("keyup", handle_key);
+            window.removeEventListener("keyup", handle_key)
         }
     })
 </script>
@@ -54,16 +54,16 @@
 <div class="bottom">
     <div class="left arrow" on:click={() => {
         if (current > 0) {
-            current--;
-            $offset = calc(current);
+            current--
+            $offset = calc(current)
         }
     }}>
 
     </div>
     <div class="right arrow" on:click={() => {
         if (current < years.length - 1) {
-            current++;
-            $offset = calc(current);
+            current++
+            $offset = calc(current)
         }
     }}></div>
 </div>

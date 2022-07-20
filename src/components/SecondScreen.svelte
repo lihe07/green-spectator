@@ -1,8 +1,8 @@
 <script>
-    import InteractiveMap from "./InteractiveMap.svelte";
-    import RegionDetail from "./RegionDetail.svelte";
+    import InteractiveMap from "./InteractiveMap.svelte"
+    import RegionDetail from "./RegionDetail.svelte"
 
-    let selected = null;
+    let selected = null
 </script>
 
 <div class="container">

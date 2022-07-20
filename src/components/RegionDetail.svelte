@@ -1,36 +1,36 @@
 <script>
     import {fade} from "svelte/transition"
-    import {createEventDispatcher} from "svelte";
+    import {createEventDispatcher} from "svelte"
 
 
-    import data from "../../data.json"
-    import strings from "../../strings.json"
-    import lang from "../../store";
+    import data from "../data.json"
+    import strings from "../strings.json"
+    import lang from "../store"
 
-    const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher()
 
-    export let region;
+    export let region
 
     // import ECharts from "echarts-for-svelte";
-    import * as echarts from "echarts";
-    import FlexBox from "./FlexBox.svelte";
+    import * as echarts from "echarts"
+    import FlexBox from "./FlexBox.svelte"
 
     function get_option(region) {
-        let data_map = data.hasOwnProperty(region) ? data[region].data : {};
-        let x = [];
+        let data_map = data.hasOwnProperty(region) ? data[region].data : {}
+        let x = []
         for (const year in data_map) {
-            x.push(year);
+            x.push(year)
         }
 
         x.sort((a, b) => {
-            return a - b;
-        });
+            return a - b
+        })
 
         let y = x.map(year => {
-            return data_map[year];
-        });
+            return data_map[year]
+        })
 
-        console.log(x, y);
+        console.log(x, y)
 
         return {
             tooltip: {
@@ -66,11 +66,11 @@
     }
 
     function chartAction(element) {
-        let chart = echarts.init(element);
-        chart.setOption(option);
+        let chart = echarts.init(element)
+        chart.setOption(option)
     }
 
-    $: option = get_option(region);
+    $: option = get_option(region)
 
     $:out_of_data = !data.hasOwnProperty(region)
 

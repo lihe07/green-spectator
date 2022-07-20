@@ -1,9 +1,9 @@
 <script>
-    import HorizontalSwitch from "./HorizontalSwitch.svelte";
-    import strings from "../../strings.json";
-    import lang from "../../store.js";
+    import HorizontalSwitch from "./HorizontalSwitch.svelte"
+    import strings from "../strings.json"
+    import lang from "../store.js"
 
-    export let years;
+    export let years
 
 </script>
 
@@ -15,8 +15,8 @@
         </div>
         <HorizontalSwitch {years}/>
         <div class="footer">
-            <a class:active={$lang === "en"} on:click={() => $lang = "en"}>English</a>
-            <a class:active={$lang === "cn"} on:click={() => $lang = "cn"}>中文</a>
+            <span class:active={$lang === "en"} on:click={() => $lang = "en"}>English</span>
+            <span class:active={$lang === "cn"} on:click={() => $lang = "cn"}>中文</span>
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
         font-family: "Graduate";
         font-style: normal;
         font-weight: 400;
-        src: url("/Graduate.woff2") format("woff2");
+        src: url("../assets/Graduate.woff2") format("woff2");
     }
 
     .container {
@@ -36,7 +36,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: url("/bg.jpg") no-repeat center center fixed;
+        background: url("../assets/bg.jpg") no-repeat center center fixed;
         background-size: cover;
     }
 
@@ -83,7 +83,7 @@
         bottom: 20px;
     }
 
-    a {
+    span {
         color: rgba(255, 255, 255, 0.4);
         font-family: var(--font-sans-serif);
         letter-spacing: 1px;
@@ -91,11 +91,11 @@
         cursor: pointer;
     }
 
-    a:hover {
+    span:hover {
         color: rgba(255, 255, 255, 0.8);
     }
 
-    a:active, a.active {
+    span:active, span.active {
         color: rgba(255, 255, 255, 0.8);
     }
 </style>

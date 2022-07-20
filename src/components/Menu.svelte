@@ -1,46 +1,46 @@
 <script>
-    import {tweened} from "svelte/motion";
-    import {onMount} from "svelte";
-    import {cubicInOut} from "svelte/easing";
-    import strings from "../../strings.json";
-    import lang from "../../store"
+    import {tweened} from "svelte/motion"
+    import {onMount} from "svelte"
+    import {cubicInOut} from "svelte/easing"
+    import strings from "../strings.json"
+    import lang from "../store"
 
     // export let current = 0;
 
-    let html = document.querySelector("html");
+    let html = document.querySelector("html")
 
-    let scroll_top = html.scrollTop;
-    let scrolling = false;
+    let scroll_top = html.scrollTop
+    let scrolling = false
 
 
     function on_scroll(e) {
-        if (scrolling) return;
-        scroll_top = html.scrollTop;
+        if (scrolling) return
+        scroll_top = html.scrollTop
     }
 
 
     function handle_resize() {
-        html.scrollTop = window.innerHeight * current;
+        html.scrollTop = window.innerHeight * current
     }
 
-    let inited = false;
+    let inited = false
     onMount(() => {
-        window.addEventListener("scroll", on_scroll);
+        window.addEventListener("scroll", on_scroll)
         // 检查query
-        let query = new URLSearchParams(window.location.search);
+        let query = new URLSearchParams(window.location.search)
         if (query.get("index") || parseInt(query.get("index")) >= 0 || parseInt(query.get("index")) <= 2) {
-            html.scrollTop = window.innerHeight * parseInt(query.get("index"));
-            scroll_top = html.scrollTop;
+            html.scrollTop = window.innerHeight * parseInt(query.get("index"))
+            scroll_top = html.scrollTop
         }
-        window.addEventListener("resize", handle_resize);
-        inited = true;
+        window.addEventListener("resize", handle_resize)
+        inited = true
         return () => {
-            window.removeEventListener("scroll", on_scroll);
-            window.removeEventListener("resize", handle_resize);
-        };
+            window.removeEventListener("scroll", on_scroll)
+            window.removeEventListener("resize", handle_resize)
+        }
     })
 
-    $:current = Math.round(scroll_top / window.innerHeight);
+    $:current = Math.round(scroll_top / window.innerHeight)
 
     function calc(current) {
         return (current - 1) * -50
@@ -49,33 +49,33 @@
     const offset = tweened(calc(current), {
         duration: 500,
         easing: cubicInOut
-    });
+    })
 
     function stick_to(current) {
-        if (scrolling) return;
+        if (scrolling) return
         const temp = tweened(html.scrollTop, {
             duration: 500,
             easing: cubicInOut
-        });
-        temp.set(current * window.innerHeight);
+        })
+        temp.set(current * window.innerHeight)
         temp.subscribe(top => {
-            html.scrollTop = top;
-        });
-        scroll_top = current * window.innerHeight;
-        scrolling = true;
+            html.scrollTop = top
+        })
+        scroll_top = current * window.innerHeight
+        scrolling = true
         setTimeout(() => {
-            scrolling = false;
-        }, 600);
+            scrolling = false
+        }, 600)
     }
 
     $: {
-        $offset = calc(current);
-        stick_to(current);
+        $offset = calc(current)
+        stick_to(current)
         if (inited) {
             // 设置?index=...
-            let query = new URLSearchParams(window.location.search);
-            query.set("index", current);
-            window.history.replaceState({}, "", `${window.location.pathname}?${query.toString()}`);
+            let query = new URLSearchParams(window.location.search)
+            query.set("index", current)
+            window.history.replaceState({}, "", `${window.location.pathname}?${query.toString()}`)
         }
     }
 
