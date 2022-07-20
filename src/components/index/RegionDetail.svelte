@@ -11,8 +11,8 @@
 
     export let region;
 
-    import ECharts from "echarts-for-svelte";
-    import echarts from "echarts";
+    // import ECharts from "echarts-for-svelte";
+    import * as echarts from "echarts";
     import FlexBox from "./FlexBox.svelte";
 
     function get_option(region) {
@@ -65,6 +65,11 @@
         }
     }
 
+    function chartAction(element) {
+        let chart = echarts.init(element);
+        chart.setOption(option);
+    }
+
     $: option = get_option(region);
 
     $:out_of_data = !data.hasOwnProperty(region)
@@ -85,8 +90,8 @@
             {:else}
                 <div in:fade>
                     <h2>{strings['index.region_detail.title'][$lang].replace("%", data[region].name)}</h2>
-                    <div class="chart">
-                        <ECharts {echarts} {option} theme="dark" ></ECharts>
+                    <div class="chart" uses:chartAction>
+                        <!-- <ECharts {echarts} {option} theme="dark" ></ECharts> -->
                     </div>
                 </div>
 
