@@ -7,12 +7,13 @@
 
     let chart
     function mapAction(element) {
-        console.log(element);
+        console.log(element)
         chart = echarts.init(element)
         getGeoJson('100000_full').then(china => initChart(china, '全国'))
     }
 
     function initChart(geoJson, name) {
+        console.log(geoJson)
         echarts.registerMap(name, geoJson)
         let option = {
             title: {
@@ -30,7 +31,7 @@
     }
 
     async function getGeoJson(region) {
-        return await fetch('https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=' + region)
+        return await (await fetch('https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=' + region)).json()
     }
 
 </script>
