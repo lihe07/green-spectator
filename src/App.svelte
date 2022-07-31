@@ -5,30 +5,38 @@
   import LastScreen from "./components/LastScreen.svelte";
   import Menu from "./components/Menu.svelte";
 
-  let years_map = {};
+  let yearsMap = {};
 
-  for (const region_name in data) {
-    let region = data[region_name];
-    for (let year in region.data) {
-      year = Number.parseInt(year);
-      if (years_map.hasOwnProperty(year)) {
-        years_map[year] += region.data[year];
-      } else {
-        years_map[year] = region.data[year];
+  let years = data['years']
+  for (const year of years) {
+    yearsMap[year] = 0
+  }
+
+
+  for (const key in data) {
+    if (key !== 'years') {
+      for (const pollutionSource of data[key]) {
+        let i = 0;
+        pollutionSource.data.forEach(number => {
+            yearsMap[years[i]] += number;
+            i++;
+        })
       }
     }
   }
 
-  let years = [];
+  console.log(yearsMap);
 
-  for (const year in years_map) {
-    years.push({
+  let yearsData = []
+
+  for (const year in yearsMap) {
+    yearsData.push({
       year,
-      data: years_map[year],
+      data: yearsMap[year],
     });
   }
 
-  years.sort((a, b) => {
+  yearsData.sort((a, b) => {
     return a.year - b.year;
   });
 </script>
@@ -38,7 +46,7 @@
 </svelte:head>
 
 <div style="overflow: hidden">
-  <FirstScreen {years} />
+  <FirstScreen years={yearsData} />
   <SecondScreen />
   <LastScreen />
 </div>
