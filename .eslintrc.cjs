@@ -1,32 +1,14 @@
 module.exports = {
+  env: {
+    browser: true,
+    es2021: true
+  },
+  plugins: ['solid'],
+  extends: ['standard', 'plugin:solid/recommended'],
+  overrides: [],
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  env: {
-    es6: true,
-    browser: true,
-    node: true
-  },
-  extends: [
-    'eslint:recommended'
-  ],
-  plugins: [
-    'svelte3'
-  ],
-  ignorePatterns: [
-    'public'
-  ],
-  overrides: [
-    {
-      files: ['**/*.svelte'],
-      processor: 'svelte3/svelte3'
-    }
-  ],
-  rules: {
-    semi: ['error', 'never'] // uncomment if you want to remove ;
-  },
-  settings: {
-    // ...
-  }
+  rules: {}
 }

@@ -1,7 +1,14 @@
 import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import solidPlugin from 'vite-plugin-solid'
+import unocss from 'unocss/vite'
+import eslint from 'vite-plugin-eslint'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [svelte()]
+  plugins: [solidPlugin(), unocss(), eslint()],
+  server: {
+    port: 3000
+  },
+  build: {
+    target: 'esnext'
+  }
 })

@@ -1,27 +1,32 @@
 {
-  "name": "green-spectator-vite",
-  "private": true,
+  "name": "solidjs-template",
   "version": "0.0.0",
-  "type": "module",
+  "description": "",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext .js --ext .svelte",
-    "fix": "eslint . --ext .js --ext .svelte --fix"
+    "serve": "vite preview",
+    "lint": "eslint src --ext .js --ext .jsx",
+    "format": "prettier-eslint \"src/**/*.js\" \"src/**/*.jsx\" --write"
   },
+  "license": "Unlicense",
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.1",
-    "eslint": "^8.21.0",
+    "eslint": "^8.25.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-svelte3": "^4.0.0",
-    "svelte": "^3.49.0",
-    "vite": "^3.0.4"
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-solid": "^0.7.3",
+    "prettier": "^2.7.1",
+    "prettier-eslint-cli": "^7.1.0",
+    "typescript": "^4.8.4",
+    "unocss": "^0.45.29",
+    "vite": "^3.1.7",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-solid": "^2.3.9"
   },
   "dependencies": {
-    "echarts": "^5.3.3"
+    "solid-js": "^1.5.7"
   }
 }
