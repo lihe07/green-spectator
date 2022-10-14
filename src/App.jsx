@@ -1,10 +1,18 @@
+import { Route, Routes } from '@solidjs/router'
+import { lazy } from 'solid-js'
+import Header from './components/Header'
+
+const Index = lazy(() => import('./views/Index'))
+
 export default () => {
   return (
-    <main>
-      <h1>Hello World!</h1>
-      <p>
-        UnoCSS is <span class="color-green">enabled!</span>
-      </p>
-    </main>
+    <div class="bg-true-gray-9 min-h-screen">
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" component={Index} />
+        </Routes>
+      </main>
+    </div>
   )
 }
