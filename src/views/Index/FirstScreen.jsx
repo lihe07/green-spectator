@@ -69,7 +69,7 @@ export default () => {
           <Motion.div
             class="absolute w-15 h-15"
             animate={{ top: top() }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.5 }}
             onClick={() => {
               // scroll
               setTop('100%')
@@ -82,7 +82,7 @@ export default () => {
                 500
               )
 
-              setTimeout(() => setTop('0%'), 2000)
+              setTimeout(() => setTop('0%'), 1000)
             }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
