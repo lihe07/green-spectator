@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js'
+import { createSignal, Show } from 'solid-js'
 import video1 from '../../assets/videos/1.mp4'
 import video2 from '../../assets/videos/2.mp4'
 import video3 from '../../assets/videos/3.mp4'
@@ -11,7 +11,8 @@ export default () => {
   const [current, setCurrent] = createSignal(0)
   const [loading, setLoading] = createSignal(true)
   let video
-  let isFirst = true
+  // let isFirst = true
+  const [isFirst, setIsFirst] = createSignal(true)
   const currentVideo = () => {
     switch (current()) {
       case 0:
@@ -29,18 +30,31 @@ export default () => {
     <section class="w-full h-screen text-white relative">
       {/* Loading hover */}
       <div
-        class="bg-true-gray-9 w-full h-full absolute z-3 transition-opacity-300 pointer-events-none"
+        class="bg-true-gray-9 w-full h-full absolute z-3 transition-opacity-300 pointer-events-none flex justify-center items-center"
         classList={{ 'op-100': loading(), 'op-0': !loading() }}
-      />
+      >
+        <div
+          class="color-white flex items-center justify-center transition-opacity-300 bg-true-gray-8 p8 rounded-xl op-0"
+          classList={{ '!op-100': isFirst() }}
+        >
+          <div class="w-20 h-20 flex justify-center items-center mr-5">
+            LOGO
+          </div>
+          <div>
+            <h2 class="">Green Spectator</h2>
+            <p class="op-80">Site is loading...</p>
+          </div>
+        </div>
+      </div>
       <video
         ref={video}
         src={currentVideo()}
         preload="auto"
         onCanPlay={() => {
           if (video.readyState !== 4) return
-          if (isFirst) {
+          if (isFirst()) {
             setLoading(false)
-            isFirst = false
+            setIsFirst(false)
           } else setTimeout(() => setLoading(false), 300)
           video.muted = true
           video.play()
