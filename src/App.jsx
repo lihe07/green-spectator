@@ -11,6 +11,8 @@ export default () => {
       <main>
         <Routes>
           <Route path="/" component={Index} />
+          <Route path="/placeholder" />
+          <Route path="/ranking" />
         </Routes>
       </main>
     </div>
