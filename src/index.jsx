@@ -12,3 +12,9 @@ render(
   ),
   document.getElementById('root')
 )
+
+// DBG
+console.log('scroll')
+setTimeout(() => {
+  window.scrollTo({ top: window.innerHeight, behavior: 'auto' })
+}, 500)

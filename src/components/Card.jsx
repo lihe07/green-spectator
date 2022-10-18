@@ -1,6 +1,10 @@
-import { mergeProps } from 'solid-js'
+import { splitProps } from 'solid-js'
 
 export default (props) => {
-  const newProps = mergeProps({ class: 'bg-true-gray-8 rounded-xl' }, props)
-  return <div {...newProps()}>{props.children}</div>
+  const [local, others] = splitProps(props, ['children', 'class'])
+  return (
+    <div {...others} class={'bg-true-gray-8 rounded-xl ' + local.class}>
+      {local.children}
+    </div>
+  )
 }

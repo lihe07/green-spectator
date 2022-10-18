@@ -1,6 +1,12 @@
 import { Motion } from '@motionone/solid'
 import { createEffect, createSignal, Show } from 'solid-js'
 
+const colors = [
+  'bg-gradient-from-sky-4 bg-gradient-to-teal-4',
+  'bg-gradient-from-teal-4 bg-gradient-to-cyan-7',
+  'bg-gradient-from-cyan-7 bg-gradient-to-sky-4'
+]
+
 export default (props) => {
   const [resetting, setResetting] = createSignal(true)
 
@@ -23,7 +29,12 @@ export default (props) => {
     >
       <div class="m-8">
         <p class="text-6" style={{ 'line-height': '35px' }}>
-          <span class="text-10 font-bold m-r-2 bg-gradient-from-sky-4 bg-gradient-to-teal-4 bg-gradient-linear bg-clip-text text-transparent">
+          <span
+            class={
+              'text-10 font-bold m-r-2 bg-gradient-to-r bg-clip-text text-transparent ' +
+              colors[props.current()]
+            }
+          >
             114%
           </span>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
