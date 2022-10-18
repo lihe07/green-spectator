@@ -35,7 +35,9 @@ export default () => {
       <video
         ref={video}
         src={currentVideo()}
+        preload="auto"
         onCanPlay={() => {
+          if (video.readyState !== 4) return
           if (isFirst) {
             setLoading(false)
             isFirst = false
@@ -58,7 +60,7 @@ export default () => {
       />
       <FirstScreenBlock current={current} duration={duration} />
       <Motion.div
-        class="absolute bottom-5 left-50% translate-x--50% write-vertical-right text-6 tracking-wide"
+        class="absolute bottom-5 left-50% translate-x--50% write-vertical-right text-6 font-600 tracking-wider"
         animate={{ opacity: [0, 1] }}
         transition={{ duration: 1, delay: 0 }}
       >

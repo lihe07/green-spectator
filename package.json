@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@motionone/solid": "^10.14.2",
+    "@solid-primitives/i18n": "^1.1.1",
     "solid-js": "^1.5.9"
   }
 }
