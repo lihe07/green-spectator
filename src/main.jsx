@@ -12,3 +12,14 @@ render(
   ),
   document.getElementById('root')
 )
+
+// DBG
+
+function checkAndScroll () {
+  if (window.scrollY < window.innerHeight) {
+    window.scrollTo({ top: window.innerHeight, behavior: 'auto' })
+    requestAnimationFrame(checkAndScroll)
+  }
+}
+
+checkAndScroll()
