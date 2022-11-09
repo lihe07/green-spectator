@@ -21,5 +21,6 @@ function checkAndScroll () {
     requestAnimationFrame(checkAndScroll)
   }
 }
-
-checkAndScroll()
+if (import.meta.env.DEV) {
+  checkAndScroll()
+}
