@@ -43,7 +43,7 @@ export const AppContextProvider = (props) => {
   }
 
   function switchTheme (theme = null) {
-    if (theme === null) {
+    if (theme !== 'dark' && theme !== 'light') {
       theme = dark() ? 'light' : 'dark'
     }
     setDark(theme === 'dark')

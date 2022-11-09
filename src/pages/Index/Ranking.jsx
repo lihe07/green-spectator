@@ -1,4 +1,5 @@
 import Card from '../../components/Card'
+import InteractiveMap from '../../components/InteractiveMap'
 import Legend from '../../components/Legend'
 import Section from '../../components/Section'
 import Title from '../../components/Title'
@@ -14,7 +15,9 @@ export default () => {
       />
       <div class="flex h-150 m-t-20">
         <Legend />
-        <Card class="w-50% mx-20">Middle</Card>
+        <Card class="w-50% mx-20">
+          <InteractiveMap />
+        </Card>
         <Card class="flex-grow">
           <RankingItem name="Provience Name" unit="unit" data={114} rank={1} />
         </Card>
