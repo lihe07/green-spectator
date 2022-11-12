@@ -1,8 +1,10 @@
 import { createSignal } from 'solid-js'
 
-import video1 from '../../assets/videos/1.mp4'
-import video2 from '../../assets/videos/2.mp4'
-import video3 from '../../assets/videos/3.mp4'
+import video1 from '../../assets/videos/1.webm'
+import video2 from '../../assets/videos/2.webm'
+import video3 from '../../assets/videos/3.webm'
+import video4 from '../../assets/videos/4.webm'
+
 import logo from '../../assets/images/logo.svg'
 
 import FirstScreenBlock from './FirstScreenBlock'
@@ -24,6 +26,8 @@ export default () => {
         return video2
       case 2:
         return video3
+      case 3:
+        return video4
     }
   }
 
@@ -68,7 +72,7 @@ export default () => {
         }}
         onTimeUpdate={() => {
           if (video.currentTime >= duration) {
-            setCurrent(current() + 1 > 2 ? 0 : current() + 1)
+            setCurrent(current() + 1 > 3 ? 0 : current() + 1)
           }
           if (duration - video.currentTime <= 0.35) {
             // DBG

@@ -4,7 +4,8 @@ import { createEffect, createSignal, Show } from 'solid-js'
 const colors = [
   'bg-gradient-from-sky-4 bg-gradient-to-teal-4',
   'bg-gradient-from-teal-4 bg-gradient-to-cyan-7',
-  'bg-gradient-from-cyan-7 bg-gradient-to-sky-4'
+  'bg-gradient-from-cyan-7 bg-gradient-to-sky-4',
+  'bg-gradient-from-sky-4 bg-gradient-to-teal-4'
 ]
 
 export default (props) => {
