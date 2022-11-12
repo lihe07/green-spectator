@@ -1,4 +1,4 @@
-import routes from '../src/routes'
+import routes from '../src/routes.js'
 import { writeFile } from 'fs/promises'
 
 const site = 'https://example.com'
