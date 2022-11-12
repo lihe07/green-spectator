@@ -1,7 +1,8 @@
 import routes from '../src/routes.js'
 import path from 'path'
 import { readFile, writeFile } from 'fs/promises'
-import { process as processHTML } from 'htmlnano'
+import pkg from 'htmlnano'
+const { process } = pkg
 
 function destinationPath (path) {
   if (path === '/') return '/index.html'
@@ -26,7 +27,7 @@ async function generateMeta () {
     }
     let html = template.replace('<!-- !!DO NOT CHANGE!! -->', meta)
     html = (
-      await processHTML(html, {
+      await process(html, {
         minifyCss: false,
         minifyJs: false,
         minifySvg: false
