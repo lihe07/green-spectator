@@ -8,7 +8,7 @@ import logo from '../../assets/images/logo.svg'
 import FirstScreenBlock from './FirstScreenBlock'
 import FirstScreenScroll from './FirstScreenScroll'
 
-const duration = 10 // Play for 5sec
+const duration = 5 // Play for 5sec
 
 export default () => {
   const [current, setCurrent] = createSignal(0)
@@ -31,7 +31,7 @@ export default () => {
     <section class="w-full h-screen text-white relative">
       {/* Loading hover */}
       <div
-        class="bg-true-gray-9 w-full h-full absolute z-3 transition-opacity-300 pointer-events-none flex justify-center items-center"
+        class="dark:bg-true-gray-9 light:bg-teal-9 w-full h-full absolute z-3 transition-opacity-300 pointer-events-none flex justify-center items-center"
         classList={{
           'op-100': loading(),
           'op-0': !loading(),
@@ -39,7 +39,7 @@ export default () => {
         }}
       >
         <div
-          class="color-white flex items-center justify-center transition-opacity-300 bg-true-gray-8 p8 rounded-xl op-0"
+          class="color-white  flex items-center justify-center transition-opacity-300 dark:bg-true-gray-8 light:bg-teal-8 p8 rounded-xl op-0"
           classList={{ '!op-100': isFirst() }}
         >
           <img

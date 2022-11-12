@@ -35,14 +35,14 @@ export default () => {
   const line = 'bg-white h-4px w-6 rounded'
   return (
     <header
-      class="fixed z-1 top-0 w-full h-20 bg-true-gray-8 bg-op-70 backdrop-blur flex items-center justify-between transition-opacity-300"
+      class="fixed z-2 top-0 w-full h-20 dark:bg-true-gray-8 light:bg-teal-7 !bg-op-70 backdrop-blur flex items-center justify-between transition-opacity-300"
       classList={{ 'op-100': show(), 'op-0': !show() }}
     >
-      {/* Left */}
       <div class="max-w-300 px-10 w-full ma flex justify-between items-center text-5 color-white relative">
-        <div class="flex items-center max-w-50% overflow-hidden">
+        {/* Left */}
+        <div class="flex items-center ">
           <span class="">LOGO</span>
-          <div class="ml-20 flex md:op-100 max-w-100% md:pointer-events-auto pointer-events-none op-0 transition">
+          <div class="ml-20 flex md:op-100 md:w-auto w-0 max-w-100% md:pointer-events-auto pointer-events-none op-0 transition">
             <For each={routes}>
               {(route) => (
                 <div

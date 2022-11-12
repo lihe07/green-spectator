@@ -18,7 +18,7 @@ export default (props) => {
 
   return (
     <div
-      class="absolute overflow-hidden md:w-125 m-x-10 rounded-6 bg-true-gray-9 bg-opacity-40 backdrop-blur-lg top-10 "
+      class="absolute overflow-hidden md:w-125 m-x-10 rounded-6 dark:bg-true-gray-9 light:bg-teal-9 !bg-opacity-40 backdrop-blur-lg top-10 "
       // classList={
       //   {
       //     // 'left-10 bottom-10': props.current() === 0,

@@ -1,6 +1,6 @@
 export default (props) => {
   return (
-    <div class="flex">
+    <div class="flex color-white">
       <div>{props.rank}</div>
       <span>{props.name}</span>
       <span>

@@ -6,8 +6,8 @@ export default (props_) => {
     direction: 'right'
   })
   return (
-    <Card class="w-18 relative bg-gradient-linear bg-op-10 from-red to-green">
-      <div class="w-full h-full op-50 bg-dark" />
+    <Card class="md:w-18 w-13 relative bg-gradient-linear bg-op-10 from-red to-green z1">
+      <div class="w-full h-full op-50 bg-dark rounded-xl" />
       <div class="w-full h-90% absolute top-4% left-0">
         <For each={[100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0]}>
           {(num) => (
@@ -23,8 +23,8 @@ export default (props_) => {
               <div
                 class="bg-white h-1 m-r-2"
                 classList={{
-                  'w-22': num % 50 === 0,
-                  'w-20': num % 50 !== 0
+                  'md:w-22 w-13': num % 50 === 0,
+                  'md:w-20 w-13': num % 50 !== 0
                 }}
               />
               <span

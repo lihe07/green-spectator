@@ -48,7 +48,11 @@ export const AppContextProvider = (props) => {
     }
     setDark(theme === 'dark')
     localStorage.setItem('theme', theme)
+    document.body.classList.toggle('dark', theme === 'dark')
+    document.body.classList.toggle('light', theme === 'light')
   }
+  document.body.classList.toggle('dark', theme === 'dark')
+  document.body.classList.toggle('light', theme === 'light')
 
   const value = {
     lang: i18n[1].locale,

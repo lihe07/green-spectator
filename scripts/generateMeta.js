@@ -1,4 +1,4 @@
-import routes from '../src/routes'
+import routes from '../src/routes.js'
 import path from 'path'
 import { readFile, writeFile } from 'fs/promises'
 import { process as processHTML } from 'htmlnano'
