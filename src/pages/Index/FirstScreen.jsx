@@ -39,7 +39,7 @@ export default () => {
         classList={{
           'op-100': loading(),
           'op-0': !loading(),
-          fixed: isFirst()
+          'fixed !z-10': isFirst()
         }}
       >
         <div
