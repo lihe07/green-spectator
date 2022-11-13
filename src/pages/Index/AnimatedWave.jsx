@@ -42,7 +42,7 @@ export default (props) => {
       ref={container}
     >
       <Motion.div
-        class="w-150% h-full absolute"
+        class="w-150% h-full absolute dark:color-true-gray-8 light:color-cyan-9"
         animate={{ left: left() + '%' }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
@@ -53,7 +53,7 @@ export default (props) => {
           preserveAspectRatio="none"
         >
           <path
-            fill="#262626"
+            fill="currentColor"
             fill-opacity="1"
             d="M0,224L80,202.7C160,181,320,139,480,144C640,149,800,203,960,234.7C1120,267,1280,277,1360,282.7L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
           />
