@@ -1,5 +1,6 @@
 import { Motion } from '@motionone/solid'
 import { createSignal, onMount } from 'solid-js'
+import Section from '../../components/Section'
 
 export default (props) => {
   const [left, setLeft] = createSignal(-50)
@@ -38,8 +39,8 @@ export default (props) => {
   })
   return (
     <div
-      class="w-full h-30vw max-h-70 overflow-hidden relative"
       ref={container}
+      class="w-full h-30vw max-h-70 relative overflow-hidden"
     >
       <Motion.div
         class="w-150% h-full absolute dark:color-true-gray-8 light:color-cyan-9"

@@ -3,6 +3,7 @@ import Equation from './Equation'
 import blob1l from '../../assets/images/blob1l.svg'
 import blob1r from '../../assets/images/blob1r.svg'
 import { For } from 'solid-js'
+import Section from '../../components/Section'
 
 const equations = [
   {
@@ -24,11 +25,9 @@ export default () => {
         Take Action
       </h1>
       {/* Equations */}
-      <br />
-      <div class="p-10 max-w-300 ma">
+      <Section>
         <For each={equations}>{(equation) => <Equation {...equation} />}</For>
-      </div>
-      <br />
+      </Section>
     </section>
   )
 }

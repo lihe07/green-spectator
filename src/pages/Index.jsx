@@ -4,6 +4,7 @@ import Prediction from './Index/Prediction'
 import AnimatedWave from './Index/AnimatedWave'
 import TakeAction from './Index/TakeAction'
 import Articles from './Index/Articles'
+import Section from '../components/Section'
 
 export default () => {
   return (
@@ -11,9 +12,11 @@ export default () => {
       <FirstScreen />
       <Ranking />
       <Prediction />
-      <AnimatedWave type="immediate" />
-      <TakeAction />
-      <Articles />
+      <Section animOnly={true}>
+        <AnimatedWave type="immediate" />
+        <TakeAction />
+        <Articles />
+      </Section>
     </>
   )
 }

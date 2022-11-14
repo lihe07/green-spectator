@@ -1,3 +1,8 @@
+import { createResource, createSignal } from 'solid-js'
+import { csv } from 'd3'
+
+import dataUrl from '../../assets/data.csv?url'
+
 import Card from '../../components/Card'
 import InteractiveMap from '../../components/InteractiveMap'
 import Legend from '../../components/Legend'
@@ -5,7 +10,19 @@ import Section from '../../components/Section'
 import Title from '../../components/Title'
 import RankingItem from './RankingItem'
 
+async function fetcher () {
+  const data = await csv(dataUrl)
+  console.log(data)
+  return data
+}
+
 export default () => {
+  const [mode, setMode] = createSignal('listing') // listing, chart
+  const showChart = () => mode() === 'chart'
+  const showListing = () => mode() === 'listing'
+
+  const data = createResource(fetcher)
+
   return (
     <Section id="ranking">
       <div class="h-20" />
