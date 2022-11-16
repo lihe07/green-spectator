@@ -1,9 +1,9 @@
 import { createSignal } from 'solid-js'
 
-import video1 from '../../assets/videos/1.webm'
-import video2 from '../../assets/videos/2.webm'
-import video3 from '../../assets/videos/3.webm'
-import video4 from '../../assets/videos/4.webm'
+// import video1 from '../../assets/videos/1.webm'
+// import video2 from '../../assets/videos/2.webm'
+// import video3 from '../../assets/videos/3.webm'
+// import video4 from '../../assets/videos/4.webm'
 
 import logo from '../../assets/images/logo.svg'
 
@@ -21,13 +21,13 @@ export default () => {
   const currentVideo = () => {
     switch (current()) {
       case 0:
-        return video1
+        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/51055966374496eb66d1/1.mp4'
       case 1:
-        return video2
+        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/1636977637449885f94e/.mp4'
       case 2:
-        return video3
+        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/679395637449a574629/3.mp4'
       case 3:
-        return video4
+        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/3081980637449b3a122a/.mp4'
     }
   }
 
@@ -61,6 +61,7 @@ export default () => {
         src={currentVideo()}
         preload="auto"
         disablePictureInPicture="true"
+        referrerPolicy="no-referrer"
         muted="true"
         onCanPlay={() => {
           if (video.readyState !== 4) return
