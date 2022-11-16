@@ -60,7 +60,8 @@ export default () => {
         ref={video}
         src={currentVideo()}
         preload="auto"
-        disablePictureInPicture
+        disablePictureInPicture="true"
+        muted="true"
         onCanPlay={() => {
           if (video.readyState !== 4) return
           if (isFirst()) {
