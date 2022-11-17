@@ -14,8 +14,10 @@ export default () => {
       <Prediction />
       <Section animOnly={true}>
         <AnimatedWave type="immediate" />
-        <TakeAction />
-        <Articles />
+        <div class="dark:bg-true-gray-8 light:bg-teal-9">
+          <TakeAction />
+          <Articles />
+        </div>
       </Section>
     </>
   )

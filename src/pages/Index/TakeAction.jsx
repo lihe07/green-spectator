@@ -1,11 +1,21 @@
 import Equation from './Equation'
 
-import blob1l from '../../assets/images/blob1l.svg'
-import blob1r from '../../assets/images/blob1r.svg'
+import blob1l from '../../assets/images/blob1l.svg?raw'
+import blob1r from '../../assets/images/blob1r.svg?raw'
 import { For } from 'solid-js'
 import Section from '../../components/Section'
 
 const equations = [
+  {
+    leftBlob: blob1l,
+    rightBlob: blob1r,
+    left: 'Waste Classified',
+    right: 'Carbon Reduced',
+    leftValue: '114',
+    rightValue: '514',
+    leftUnit: 'kg',
+    rightUnit: 'kg'
+  },
   {
     leftBlob: blob1l,
     rightBlob: blob1r,
@@ -20,14 +30,12 @@ const equations = [
 
 export default () => {
   return (
-    <section class="dark:bg-true-gray-8 light:bg-cyan-9 h-100">
+    <Section>
       <h1 class="m0 text-center color-white text-10 tracking-wide md:text-15">
         Take Action
       </h1>
-      {/* Equations */}
-      <Section>
-        <For each={equations}>{(equation) => <Equation {...equation} />}</For>
-      </Section>
-    </section>
+      <div class="h-20" />
+      <For each={equations}>{(equation) => <Equation {...equation} />}</For>
+    </Section>
   )
 }
