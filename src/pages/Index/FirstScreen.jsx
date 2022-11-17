@@ -64,6 +64,7 @@ export default () => {
         referrerPolicy="no-referrer"
         muted="true"
         autoPlay="true"
+        volume="0"
         onCanPlay={() => {
           if (video.readyState !== 4) return
           if (isFirst()) {
