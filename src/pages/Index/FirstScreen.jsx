@@ -63,6 +63,7 @@ export default () => {
         disablePictureInPicture="true"
         referrerPolicy="no-referrer"
         muted="true"
+        autoPlay="true"
         onCanPlay={() => {
           if (video.readyState !== 4) return
           if (isFirst()) {
@@ -70,7 +71,16 @@ export default () => {
             setIsFirst(false)
           } else setTimeout(() => setLoading(false), 300)
           video.muted = true
-          video.play()
+          const promise = video.play()
+          if (promise !== undefined) {
+            promise.catch(() => {
+              setTimeout(() => setLoading(true), (duration - 0.35) * 1000)
+              setTimeout(
+                () => setCurrent(current() + 1 > 3 ? 0 : current() + 1),
+                duration * 1000
+              )
+            })
+          }
         }}
         onTimeUpdate={() => {
           if (video.currentTime >= duration) {
