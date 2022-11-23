@@ -28,8 +28,9 @@ export default (props) => {
   }
 
   onMount(() => {
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const root = document.getElementById('root')
+    root.addEventListener('scroll', onScroll)
+    return () => root.removeEventListener('scroll', onScroll)
   })
 
   return (

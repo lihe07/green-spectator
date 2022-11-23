@@ -4,6 +4,8 @@ import { Motion } from '@motionone/solid'
 export default () => {
   const [top, setTop] = createSignal('0%')
 
+  const root = document.getElementById('root')
+
   return (
     <Motion.div
       class="absolute bottom-5 left-50% translate-x--50% write-vertical-right flex items-center text-6 font-600 tracking-wider"
@@ -21,7 +23,7 @@ export default () => {
             setTop('100%')
             setTimeout(
               () =>
-                window.scrollTo({
+                root.scrollTo({
                   top: window.innerHeight,
                   behavior: 'smooth'
                 }),

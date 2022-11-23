@@ -4,7 +4,7 @@ import Card from '../../components/Card'
 
 export default () => {
   return (
-    <Section>
+    <Section class="snap-start">
       <Title
         title="THE TITLE"
         description="From the data we collected, .....Lorem ipsum dolor sit amet, consectetur adipiscing elit, This sentence can not be too long (max 50%)"

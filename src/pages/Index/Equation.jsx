@@ -8,7 +8,7 @@ const Block = (props) => {
       {/* SVG */}
       <div
         class={
-          'absolute md:w-110 w-50 md:top-0 top--1 md:left--20 left--10 z-0 dark:color-slate-7 light:color-teal-7 ' +
+          'absolute md:w-110 w-50 md:top-0 top--1 md:left--20 left--10 z-0 dark:color-slate-7 light:color-teal-7 transition-colors-300 ' +
           svgContainer
         }
         innerHTML={props.blob}
@@ -25,7 +25,7 @@ const Block = (props) => {
 }
 
 const eq =
-  'md:w-30 w-10 md:h-3 h-2 md:m-y-7 m-y-3 rounded dark:bg-true-gray-4 light:bg-teal-6'
+  'md:w-30 w-10 md:h-3 h-2 md:m-y-7 m-y-3 rounded dark:bg-true-gray-4 light:bg-teal-6 transition-colors-300'
 
 export default (props) => {
   return (

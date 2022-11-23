@@ -9,6 +9,7 @@ import Legend from '../../components/Legend'
 import Section from '../../components/Section'
 import Title from '../../components/Title'
 import RankingItem from './RankingItem'
+import { useI18n } from '@solid-primitives/i18n'
 
 async function fetcher () {
   const data = await csv(dataUrl)
@@ -17,6 +18,8 @@ async function fetcher () {
 }
 
 export default () => {
+  const [t] = useI18n()
+
   const [mode, setMode] = createSignal('listing') // listing, chart
   const showChart = () => mode() === 'chart'
   const showListing = () => mode() === 'listing'
@@ -24,20 +27,31 @@ export default () => {
   const data = createResource(fetcher)
 
   return (
-    <Section id="ranking">
+    <Section id="ranking" class="snap-start">
       <div class="h-20" />
       <Title
         title="THE TITLE"
         description="From the data we collected, .....Lorem ipsum dolor sit amet, consectetur adipiscing elit, This sentence can not be too long (max 50%)"
       />
-      <div class="flex relative h-150 md:m-t-20 justify-between m-t-30">
-        <Legend />
-        <Card class="md:w-50% md:mx-20 md:relative md:h-150 md:left-0 md:top-0 absolute w-[calc(100%+5rem)] left--10 top--10 h-170">
-          <InteractiveMap defaultLevel="china" />
-        </Card>
-        <Card class="md:flex-grow z-1 w-30 md:!bg-opacity-100 !bg-op-70 backdrop-blur">
-          <RankingItem name="Provience Name" unit="unit" data={114} rank={1} />
-        </Card>
+      {/* Snap */}
+      <div class="md:h-150 h-screen snap-start p-t-20">
+        {/* Flex */}
+        <div class="flex relative md:h-full h-[calc(100vh-180px)] md:p0 p-t-13 justify-between">
+          <Legend />
+
+          <Card class="md:w-50% md:mx-20 md:relative md:h-150 h-[calc(100vh-80px)] md:left-0 top-0 absolute w-[calc(100%+5rem)] left--10 md:!rounded-xl !rounded-none">
+            <InteractiveMap defaultLevel="china" />
+          </Card>
+
+          <Card class="md:flex-grow z-1 w-30 md:!bg-opacity-100 !bg-op-70 backdrop-blur">
+            <RankingItem
+              name="Provience Name"
+              unit="unit"
+              data={114}
+              rank={1}
+            />
+          </Card>
+        </div>
       </div>
     </Section>
   )

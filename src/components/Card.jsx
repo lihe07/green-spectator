@@ -5,7 +5,10 @@ export default (props) => {
   return (
     <div
       {...others}
-      class={'dark:bg-true-gray-8 light:bg-teal-9 rounded-xl ' + local.class}
+      class={
+        'dark:bg-true-gray-8 light:bg-teal-9 rounded-xl transition-colors-300 ' +
+        local.class
+      }
     >
       {local.children}
     </div>

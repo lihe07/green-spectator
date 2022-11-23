@@ -26,12 +26,14 @@ export default (props) => {
     } else setLeft(-50)
   }
   onMount(() => {
-    window.addEventListener(
+    const root = document.getElementById('root')
+
+    root.addEventListener(
       'scroll',
       props.type === 'asScroll' ? asScroll : immediate
     )
     return () =>
-      window.removeEventListener(
+      root.removeEventListener(
         'scroll',
         props.type === 'asScroll' ? asScroll : immediate
       )
@@ -42,7 +44,7 @@ export default (props) => {
       class="w-full h-30vw max-h-70 relative overflow-hidden"
     >
       <Motion.div
-        class="w-150% h-full absolute dark:color-true-gray-8 light:color-teal-9"
+        class="w-150% h-full absolute dark:color-true-gray-8 light:color-teal-9 transition-colors-300"
         animate={{ left: left() + '%' }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
