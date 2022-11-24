@@ -30,8 +30,8 @@ export default () => {
     <Section id="ranking" class="snap-start">
       <div class="h-20" />
       <Title
-        title="THE TITLE"
-        description="From the data we collected, .....Lorem ipsum dolor sit amet, consectetur adipiscing elit, This sentence can not be too long (max 50%)"
+        title={t('index.ranking.title')}
+        description={t('index.ranking.description')}
       />
       {/* Snap */}
       <div class="md:h-150 h-screen snap-start p-t-20">
