@@ -46,10 +46,7 @@ export default () => {
           class="color-white  flex items-center justify-center transition-opacity-300 dark:bg-true-gray-8 light:bg-teal-8 p8 rounded-xl op-0"
           classList={{ '!op-100': isFirst() }}
         >
-          <img
-            class="w-20 h-20 flex justify-center items-center mr-5 object-contain"
-            src={logo}
-          />
+          <img class="w-20 h-20 mr-5 object-contain" src={logo} />
           <div>
             <h2 class="m-y-0 m-b-3">Green Spectator</h2>
             <p class="op-80 m-y-0">Site is loading...</p>
