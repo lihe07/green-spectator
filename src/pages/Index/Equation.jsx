@@ -29,7 +29,7 @@ const eq =
 
 export default (props) => {
   return (
-    <Section animOnly={true} class="flex justify-around items-center">
+    <Section animOnly={true} class="flex justify-around items-center m-b-5">
       <Block
         value={props.leftValue}
         blob={props.leftBlob}

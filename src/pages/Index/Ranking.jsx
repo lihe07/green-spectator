@@ -34,7 +34,7 @@ export default () => {
         description={t('index.ranking.description')}
       />
       {/* Snap */}
-      <div class="md:h-150 h-screen snap-start p-t-20">
+      <div class="md:h-150 h-[calc(100vh-180px)] snap-start p-t-20">
         {/* Flex */}
         <div class="flex relative md:h-full h-[calc(100vh-180px)] md:p0 p-t-13 justify-between">
           <Legend />

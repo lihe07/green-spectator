@@ -2,6 +2,7 @@ import { useI18n } from '@solid-primitives/i18n'
 import { A, useLocation } from '@solidjs/router'
 import { createSignal, For, Show } from 'solid-js'
 import { useAppContext } from '../AppContext'
+import SideMenu from './SideMenu'
 
 const routes = [
   {
@@ -33,8 +34,9 @@ export default () => {
   const show = () => (location.pathname === '/' ? scroll() : true)
 
   const [isCooling, setIsCooling] = createSignal(false)
+  const [showSideMenu, setShowSideMenu] = createSignal(false)
 
-  const line = 'bg-white h-4px w-6 rounded'
+  const line = 'bg-white h-4px w-6 rounded transition-all-300'
   return (
     <header
       class="fixed z-4 w-full h-20 dark:bg-true-gray-8 light:bg-teal-7 !bg-op-70 backdrop-blur flex items-center justify-between transition-all-300"
@@ -112,11 +114,26 @@ export default () => {
             </Show>
           </div>
         </div>
-        <div class="md:op-0 md:pointer-events-none absolute right-10 op-100 active:scale-90 transition">
-          <div class={line} />
-          <div class={line + ' m-y-1'} />
-          <div class={line} />
+        <div
+          class="md:op-0 md:pointer-events-none absolute right-10 op-100 active:scale-90 transition"
+          onClick={() => {
+            if (isCooling()) return
+            setIsCooling(true)
+            setShowSideMenu(!showSideMenu())
+            setTimeout(() => setIsCooling(false), 150)
+          }}
+        >
+          <div
+            class={line}
+            classList={{ 'rotate-45 translate-y-2': showSideMenu() }}
+          />
+          <div class={line + ' m-y-1'} classList={{ 'op-0': showSideMenu() }} />
+          <div
+            class={line}
+            classList={{ 'rotate--45 translate-y--2': showSideMenu() }}
+          />
         </div>
+        <SideMenu show={showSideMenu()} />
       </div>
     </header>
   )
