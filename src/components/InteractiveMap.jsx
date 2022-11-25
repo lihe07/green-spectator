@@ -75,7 +75,7 @@ export default (props) => {
 
   return (
     <div
-      claas="w-full max-w-full overflow-hidden transition-300"
+      claas="w-full max-w-full overflow-hidden"
       style={{ height: '100%' }}
       ref={container}
     />
