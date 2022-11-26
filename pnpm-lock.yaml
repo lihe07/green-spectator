@@ -4882,7 +4882,7 @@ packages:
       destr: registry.npmmirror.com/destr/1.2.1
       node-fetch-native: registry.npmmirror.com/node-fetch-native/0.1.8
       ufo: registry.npmmirror.com/ufo/0.8.6
-      undici: registry.npmmirror.com/undici/5.12.0
+      undici: registry.npmmirror.com/undici/5.13.0
     dev: true
 
   registry.npmmirror.com/once/1.4.0:
@@ -5953,10 +5953,10 @@ packages:
       jiti: registry.npmmirror.com/jiti/1.16.0
     dev: true
 
-  registry.npmmirror.com/undici/5.12.0:
-    resolution: {integrity: sha512-zMLamCG62PGjd9HHMpo05bSLvvwWOZgGeiWlN/vlqu3+lRo3elxktVGEyLMX+IO7c2eflLjcW74AlkhEZm15mg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/undici/-/undici-5.12.0.tgz}
+  registry.npmmirror.com/undici/5.13.0:
+    resolution: {integrity: sha512-UDZKtwb2k7KRsK4SdXWG7ErXiL7yTGgLWvk2AXO1JMjgjh404nFo6tWSCM2xMpJwMPx3J8i/vfqEh1zOqvj82Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/undici/-/undici-5.13.0.tgz}
     name: undici
-    version: 5.12.0
+    version: 5.13.0
     engines: {node: '>=12.18'}
     dependencies:
       busboy: registry.npmmirror.com/busboy/1.6.0
