@@ -33,6 +33,9 @@ async function checkCache (request, noCors = false) {
 
 self.addEventListener('fetch', async (event) => {
   try {
+    if (!event.request.url.includes('assets')) {
+      return
+    }
     if (event.request.url.endsWith('.mp4')) {
       let req = event.request
       if (event.request.url.includes('1.mp4')) {
