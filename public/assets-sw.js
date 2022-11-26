@@ -43,7 +43,7 @@ self.addEventListener('fetch', (event) => {
     } else if (event.request.url.includes('4.mp4')) {
       req = new Request(videoUrls[3])
     }
-    event.respondWith(checkCache(req))
+    event.respondWith(checkCache(req), true)
   } else {
     event.respondWith(checkCache(event.request))
   }
