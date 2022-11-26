@@ -7,7 +7,7 @@ const videoUrls = [
   'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/3081980637449b3a122a/.mp4'
 ]
 
-async function checkCache (request) {
+async function checkCache (request, noCors = false) {
   const cache = await caches.open('assets')
   const cached = await cache.match(request)
   if (cached) {
@@ -15,12 +15,17 @@ async function checkCache (request) {
     return cached
   } else {
     console.log('Cache miss: ' + request.url)
-    const response = await fetch(request, {
-      referrerPolicy: 'no-referrer',
-      referrer: '',
-      mode: 'no-cors',
-      credentials: 'omit'
-    })
+    let response
+    if (noCors) {
+      response = await fetch(request, {
+        referrerPolicy: 'no-referrer',
+        referrer: '',
+        mode: 'no-cors',
+        credentials: 'omit'
+      })
+    } else {
+      response = await fetch(request)
+    }
     cache.put(request, response.clone())
     return response
   }
