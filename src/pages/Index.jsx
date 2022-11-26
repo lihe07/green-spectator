@@ -4,8 +4,11 @@ import Prediction from './Index/Prediction'
 import AnimatedWave from './Index/AnimatedWave'
 import TakeAction from './Index/TakeAction'
 import Articles from './Index/Articles'
+import Footer from './Index/Footer'
+
 import Section from '../components/Section'
 import { onMount } from 'solid-js'
+import AboutUs from './Index/AboutUs'
 
 export default () => {
   onMount(() => {
@@ -24,6 +27,8 @@ export default () => {
           <Articles />
         </div>
       </Section>
+      <AboutUs />
+      <Footer />
     </>
   )
 }

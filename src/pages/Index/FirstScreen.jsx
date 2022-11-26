@@ -7,8 +7,8 @@ import { createSignal } from 'solid-js'
 
 import logo from '../../assets/images/logo.svg'
 
-import FirstScreenBlock from './FirstScreenBlock'
-import FirstScreenScroll from './FirstScreenScroll'
+import FirstScreenBlock from './FirstScreen/FirstScreenBlock'
+import FirstScreenScroll from './FirstScreen/FirstScreenScroll'
 
 const duration = 5 // Play for 5sec
 

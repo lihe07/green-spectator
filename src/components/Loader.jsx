@@ -1,6 +1,5 @@
 import { createEffect, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Motion } from '@motionone/solid'
 import { useIsRouting } from '@solidjs/router'
 
 export default () => {

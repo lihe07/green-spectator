@@ -20,10 +20,12 @@ export default (props) => {
   function immediate () {
     if (
       window.innerHeight - container.getBoundingClientRect().top >
-      container.offsetHeight
+      window.innerHeight / 3
     ) {
       setLeft(0)
-    } else setLeft(-50)
+    } else if (container.getBoundingClientRect().top >= window.innerHeight) {
+      setLeft(-50)
+    }
   }
   onMount(() => {
     const root = document.getElementById('root')

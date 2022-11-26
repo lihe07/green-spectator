@@ -8,7 +8,7 @@ import InteractiveMap from '../../components/InteractiveMap'
 import Legend from '../../components/Legend'
 import Section from '../../components/Section'
 import Title from '../../components/Title'
-import RankingItem from './RankingItem'
+import RankingItem from './Ranking/RankingItem'
 import { useI18n } from '@solid-primitives/i18n'
 
 async function fetcher () {

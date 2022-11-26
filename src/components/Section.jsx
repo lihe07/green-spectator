@@ -38,7 +38,7 @@ export default (props) => {
       ref={section}
       class={props.animOnly ? local.class : 'p-10 max-w-300 ma ' + local.class}
       {...others}
-      animate={{ opacity: enter() ? 1 : 0 }}
+      animate={{ opacity: enter() ? 1 : 0, y: enter() ? 0 : 20 }}
       transition={{ duration: 0.5 }}
     >
       {props.children}
