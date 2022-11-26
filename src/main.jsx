@@ -13,9 +13,11 @@ render(
   document.getElementById('root')
 )
 
-navigator.serviceWorker
-  .register('assets-sw.js')
-  .then(navigator.serviceWorker.ready)
+if (navigator.serviceWorker) {
+  navigator.serviceWorker
+    .register('assets-sw.js')
+    .then(navigator.serviceWorker.ready)
+}
 
 // DBG
 

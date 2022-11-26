@@ -9,7 +9,7 @@ const videoUrls = [
 
 async function checkCache (request, noCors = false) {
   const cache = await caches.open('assets')
-  const cached = await cache.match(request)
+  const cached = await cache.match(request.url)
   if (cached) {
     console.log('Cache hit: ' + request.url)
     return cached
@@ -26,25 +26,29 @@ async function checkCache (request, noCors = false) {
     } else {
       response = await fetch(request)
     }
-    cache.put(request, response.clone())
+    cache.put(request.url, response.clone())
     return response
   }
 }
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.url.endsWith('.mp4')) {
-    let req = event.request
-    if (event.request.url.includes('1.mp4')) {
-      req = new Request(videoUrls[0])
-    } else if (event.request.url.includes('2.mp4')) {
-      req = new Request(videoUrls[1])
-    } else if (event.request.url.includes('3.mp4')) {
-      req = new Request(videoUrls[2])
-    } else if (event.request.url.includes('4.mp4')) {
-      req = new Request(videoUrls[3])
+self.addEventListener('fetch', async (event) => {
+  try {
+    if (event.request.url.endsWith('.mp4')) {
+      let req = event.request
+      if (event.request.url.includes('1.mp4')) {
+        req = new Request(videoUrls[0])
+      } else if (event.request.url.includes('2.mp4')) {
+        req = new Request(videoUrls[1])
+      } else if (event.request.url.includes('3.mp4')) {
+        req = new Request(videoUrls[2])
+      } else if (event.request.url.includes('4.mp4')) {
+        req = new Request(videoUrls[3])
+      }
+      event.respondWith(await checkCache(req, true))
+    } else {
+      event.respondWith(await checkCache(event.request))
     }
-    event.respondWith(checkCache(req), true)
-  } else {
-    event.respondWith(checkCache(event.request))
+  } catch (e) {
+    console.log('Service Worker Error: ' + e)
   }
 })
