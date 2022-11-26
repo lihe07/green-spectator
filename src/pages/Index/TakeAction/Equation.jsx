@@ -1,6 +1,6 @@
 import { svgContainer } from './Equation.module.css'
 
-import Section from '../../components/Section'
+import Section from '../../../components/Section'
 
 const Block = (props) => {
   return (
@@ -11,6 +11,7 @@ const Block = (props) => {
           'absolute md:w-110 w-50 md:top-0 top--1 md:left--20 left--10 z-0 dark:color-slate-7 light:color-teal-7 transition-colors-300 ' +
           svgContainer
         }
+        // eslint-disable-next-line solid/no-innerhtml
         innerHTML={props.blob}
       />
       <div class="absolute md:top-23 top-10.5 w-full z-1 text-center color-white">
