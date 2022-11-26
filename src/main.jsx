@@ -13,12 +13,6 @@ render(
   document.getElementById('root')
 )
 
-if (navigator.serviceWorker) {
-  navigator.serviceWorker
-    .register('assets-sw.js')
-    .then(navigator.serviceWorker.ready)
-}
-
 // DBG
 
 function checkAndScroll () {

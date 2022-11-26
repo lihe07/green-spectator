@@ -1,9 +1,9 @@
 import { createSignal } from 'solid-js'
 
-import video1 from '../../assets/videos/1.mp4'
-import video2 from '../../assets/videos/2.mp4'
-import video3 from '../../assets/videos/3.mp4'
-import video4 from '../../assets/videos/4.mp4'
+// import video1 from '../../assets/videos/1.mp4'
+// import video2 from '../../assets/videos/2.mp4'
+// import video3 from '../../assets/videos/3.mp4'
+// import video4 from '../../assets/videos/4.mp4'
 
 import logo from '../../assets/images/logo.svg'
 
@@ -12,9 +12,9 @@ import FirstScreenScroll from './FirstScreen/FirstScreenScroll'
 
 const duration = 5 // Play for 5sec
 
-const videoListLocal = [video1, video2, video3, video4]
+// const videoListLocal = [video1, video2, video3, video4]
 
-const videoListRemote = [
+const videoList = [
   'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/51055966374496eb66d1/1.mp4',
   'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/1636977637449885f94e/.mp4',
   'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/679395637449a574629/3.mp4',
@@ -28,16 +28,9 @@ export default () => {
   // let isFirst = true
   const [isFirst, setIsFirst] = createSignal(true)
   // check if Service Worker is supported
-  let usingVideoList
-  if ('serviceWorker' in navigator) {
-    // Using local video
-    usingVideoList = videoListLocal
-  } else {
-    // Using remote video
-    usingVideoList = videoListRemote
-  }
+
   const currentVideo = () => {
-    return usingVideoList[current()]
+    return videoList[current()]
   }
 
   return (

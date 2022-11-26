@@ -3,7 +3,6 @@ import solid from 'vite-plugin-solid'
 import unocss from 'unocss/vite'
 import mdx from '@mdx-js/rollup'
 import remarkGfm from 'remark-gfm'
-import mkcert from 'vite-plugin-mkcert'
 
 export default defineConfig({
   server: { https: true },
@@ -18,10 +17,7 @@ export default defineConfig({
       }),
       enforce: 'pre'
     },
-    solid({ extensions: ['.md', '.mdx'] }),
-    mkcert({
-      source: 'coding'
-    })
+    solid({ extensions: ['.md', '.mdx'] })
   ],
   build: {
     target: 'esnext'
