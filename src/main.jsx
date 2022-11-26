@@ -13,6 +13,13 @@ render(
   document.getElementById('root')
 )
 
+navigator.serviceWorker
+  .register('assets-sw.js')
+  .then(navigator.serviceWorker.ready)
+  .then((registration) => {
+    console.log('Service Worker is ready to use.', registration)
+  })
+
 // DBG
 
 function checkAndScroll () {

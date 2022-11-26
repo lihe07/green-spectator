@@ -1,9 +1,9 @@
 import { createSignal } from 'solid-js'
 
-// import video1 from '../../assets/videos/1.webm'
-// import video2 from '../../assets/videos/2.webm'
-// import video3 from '../../assets/videos/3.webm'
-// import video4 from '../../assets/videos/4.webm'
+import video1 from '../../assets/videos/1.mp4'
+import video2 from '../../assets/videos/2.mp4'
+import video3 from '../../assets/videos/3.mp4'
+import video4 from '../../assets/videos/4.mp4'
 
 import logo from '../../assets/images/logo.svg'
 
@@ -12,23 +12,32 @@ import FirstScreenScroll from './FirstScreen/FirstScreenScroll'
 
 const duration = 5 // Play for 5sec
 
+const videoListLocal = [video1, video2, video3, video4]
+
+const videoListRemote = [
+  'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/51055966374496eb66d1/1.mp4',
+  'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/1636977637449885f94e/.mp4',
+  'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/679395637449a574629/3.mp4',
+  'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/3081980637449b3a122a/.mp4'
+]
+
 export default () => {
   const [current, setCurrent] = createSignal(0)
   const [loading, setLoading] = createSignal(true)
   let video
   // let isFirst = true
   const [isFirst, setIsFirst] = createSignal(true)
+  // check if Service Worker is supported
+  let usingVideoList
+  if ('serviceWorker' in navigator) {
+    // Using local video
+    usingVideoList = videoListLocal
+  } else {
+    // Using remote video
+    usingVideoList = videoListRemote
+  }
   const currentVideo = () => {
-    switch (current()) {
-      case 0:
-        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/51055966374496eb66d1/1.mp4'
-      case 1:
-        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/1636977637449885f94e/.mp4'
-      case 2:
-        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/679395637449a574629/3.mp4'
-      case 3:
-        return 'https://lms.d.zhan.com/zhanlms/addon_homework/2022/11/3081980637449b3a122a/.mp4'
-    }
+    return usingVideoList[current()]
   }
 
   return (
