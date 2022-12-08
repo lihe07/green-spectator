@@ -62,10 +62,11 @@ export const AppContextProvider = (props) => {
 
   createEffect(() => {
     const pathname = location.pathname
+    const locale = i18n[1].locale()
     routesWithMeta.then((routes) => {
       for (const route of routes) {
         if (pathname === route.path) {
-          if (i18n[1].locale() === 'zh') document.title = route.titleZh
+          if (locale === 'zh') document.title = route.titleZh
           else document.title = route.titleEn
           break
         }
