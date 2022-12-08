@@ -7,7 +7,7 @@ const { process } = pkg
 
 function destinationPath (path) {
   if (path === '/') return '/index.html'
-  return path + '.html'
+  return path + '/index.html'
 }
 
 function makeMeta (name, content) {
