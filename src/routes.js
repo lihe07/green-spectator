@@ -1,5 +1,7 @@
 import { lazy } from 'solid-js'
 
+import ArticleData from './pages/Article.data.js'
+
 export default () => [
   {
     path: '/',
@@ -9,6 +11,22 @@ export default () => [
       keywords: 'index, demo' // TODO: Add meta: keywords
     },
     title: 'Green Spectator'
+  },
+  {
+    path: '/articles',
+    component: lazy(() => import('./pages/Articles')),
+    meta: {
+      description: 'Articles Page', // TODO: Add meta: description
+      keywords: 'articles, demo' // TODO: Add meta: keywords
+    },
+    title: 'Green Spectator - Articles'
+  },
+  {
+    path: '/articles/:name',
+    component: lazy(() => import('./pages/Article')),
+    data: ArticleData,
+
+    map: false
   },
   {
     path: '/*all',

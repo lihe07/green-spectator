@@ -10,12 +10,12 @@ const routes = [
     path: '/'
   },
   {
-    name: 'Rank',
-    path: '/ranking'
+    name: 'Articles',
+    path: '/articles'
   },
   {
-    name: 'Placeh',
-    path: '/placeholder'
+    name: 'Anyhow',
+    path: '/anyhow'
   }
 ]
 

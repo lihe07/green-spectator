@@ -1,4 +1,4 @@
-import routes from '../src/routes.js'
+// import routes from '../src/routes.js'
 import path from 'path'
 import { readFile, writeFile } from 'fs/promises'
 import pkg from 'htmlnano'
@@ -37,4 +37,12 @@ async function generateMeta () {
   }
 }
 
-generateMeta().catch(console.error)
+export default () => {
+  return {
+    name: 'generateMeta',
+    apply: 'build',
+    async closeBundle () {
+      await generateMeta()
+    }
+  }
+}

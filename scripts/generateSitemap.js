@@ -1,4 +1,4 @@
-import routes from '../src/routes.js'
+// import routes from '../src/routes.js'
 import { writeFile } from 'fs/promises'
 
 const site = 'https://example.com'
@@ -20,4 +20,12 @@ async function generateSitemap () {
   await writeFile('./dist/sitemap.xml', sitemap)
 }
 
-generateSitemap().catch(console.error)
+export default () => {
+  return {
+    name: 'generateSitemap',
+    apply: 'build',
+    async closeBundle () {
+      await generateSitemap()
+    }
+  }
+}
