@@ -1,7 +1,11 @@
 import { createI18nContext, I18nContext } from '@solid-primitives/i18n'
-import { createContext, createSignal, useContext } from 'solid-js'
+import { createContext, createSignal, useContext, createEffect } from 'solid-js'
+import { useLocation } from '@solidjs/router'
 import dict from './lang'
 
+import _routesWithMeta from '../scripts/routes'
+
+const routesWithMeta = _routesWithMeta()
 const AppContext = createContext()
 
 function browserLanguage () {
@@ -53,6 +57,21 @@ export const AppContextProvider = (props) => {
   }
   document.body.classList.toggle('dark', theme === 'dark')
   document.body.classList.toggle('light', theme === 'light')
+
+  const location = useLocation()
+
+  createEffect(() => {
+    const pathname = location.pathname
+    routesWithMeta.then((routes) => {
+      for (const route of routes) {
+        if (pathname === route.path) {
+          if (i18n[1].locale() === 'zh') document.title = route.titleZh
+          else document.title = route.titleEn
+          break
+        }
+      }
+    })
+  })
 
   const value = {
     lang: i18n[1].locale,

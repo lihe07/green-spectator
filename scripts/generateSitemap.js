@@ -1,5 +1,6 @@
 // import routes from '../src/routes.js'
 import { writeFile } from 'fs/promises'
+import routes from './routes'
 
 const site = 'https://example.com'
 
@@ -12,8 +13,7 @@ function makeUrl (location) {
 async function generateSitemap () {
   let sitemap =
     '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-  for (const node of routes()) {
-    if (node.map === false) continue
+  for (const node of await routes()) {
     sitemap += makeUrl(node.path)
   }
   sitemap += '</urlset>'

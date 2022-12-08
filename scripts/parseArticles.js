@@ -8,6 +8,7 @@ import yaml from 'js-yaml'
 
 async function parseArticles () {
   let map = 'export default ['
+  const mapJson = []
   for (const file of await fs.readdir('./articles')) {
     if (file.endsWith('.md')) {
       // [name].[language].md
@@ -23,9 +24,15 @@ async function parseArticles () {
     meta: ${JSON.stringify(meta)},
     body: async () => await import('../articles/${file}')
   },`
+      mapJson.push({
+        name,
+        file,
+        meta
+      })
     }
   }
   await fs.writeFile('./src/.map.js', map + ']')
+  await fs.writeFile('./src/.map.json', JSON.stringify(mapJson))
 }
 
 export default () => {

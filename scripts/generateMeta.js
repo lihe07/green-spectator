@@ -1,7 +1,8 @@
-// import routes from '../src/routes.js'
+import routes from './routes.js'
 import path from 'path'
-import { readFile, writeFile } from 'fs/promises'
+import { readFile, writeFile, mkdir } from 'fs/promises'
 import pkg from 'htmlnano'
+
 const { process } = pkg
 
 function destinationPath (path) {
@@ -10,21 +11,28 @@ function destinationPath (path) {
 }
 
 function makeMeta (name, content) {
-  return `<meta name="${name}" content="${content}">`
+  let lang = 'en'
+  if (name.endsWith('Zh')) {
+    lang = 'zh'
+  }
+  // Trim
+  name = name.replace(/(Zh|En)$/, '')
+  return `<meta name="${name}" content="${content}" lang="${lang}">`
 }
 
 async function generateMeta () {
   const template = await readFile('./dist/index.html', { encoding: 'utf8' })
-  for (const node of routes()) {
-    if (node.map === false) continue
+
+  for (const node of await routes()) {
     const destination = path.join('./dist', destinationPath(node.path))
     let meta = ''
     for (const key in node.meta) {
       meta += makeMeta(key, node.meta[key])
     }
-    if (node.title) {
-      meta += `<title>${node.title}</title>`
-    }
+
+    meta += `<title lang="zh">${node.titleZh}</title>`
+    meta += `<title lang="en">${node.titleEn}</title>`
+
     let html = template.replace('<!-- !!DO NOT CHANGE!! -->', meta)
     html = (
       await process(html, {
@@ -33,7 +41,9 @@ async function generateMeta () {
         minifySvg: false
       })
     ).html
-    await writeFile(destination, html)
+    // create directory if not exists
+    await mkdir(path.dirname(destination), { recursive: true })
+    await writeFile(destination, html, { encoding: 'utf8' })
   }
 }
 
