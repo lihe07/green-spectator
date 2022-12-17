@@ -2,14 +2,16 @@ import { createResource, createSignal } from 'solid-js'
 import { csv } from 'd3'
 
 import dataUrl from '../../assets/data.csv?url'
+import { useI18n } from '@solid-primitives/i18n'
 
 import Card from '../../components/Card'
 import InteractiveMap from '../../components/InteractiveMap'
 import Legend from '../../components/Legend'
 import Section from '../../components/Section'
 import Title from '../../components/Title'
+
 import RankingItem from './Ranking/RankingItem'
-import { useI18n } from '@solid-primitives/i18n'
+import CollapseCard from './Ranking/CollapseCard'
 
 async function fetcher () {
   const data = await csv(dataUrl)
@@ -27,30 +29,37 @@ export default () => {
   const data = createResource(fetcher)
 
   return (
-    <Section id="ranking" class="snap-start">
+    <Section id="ranking">
       <div class="h-20" />
       <Title
         title={t('index.ranking.title')}
         description={t('index.ranking.description')}
       />
-      {/* Snap */}
-      <div class="md:h-150 h-[calc(100vh-180px)] snap-start p-t-20">
-        {/* Flex */}
-        <div class="flex relative md:h-full h-[calc(100vh-180px)] md:p0 p-t-13 justify-between">
-          <Legend />
 
-          <Card class="md:w-50% md:mx-20 md:relative md:h-150 h-[calc(100vh-80px)] md:left-0 top-0 absolute w-[calc(100%+5rem)] left--10 md:!rounded-xl !rounded-none">
-            <InteractiveMap defaultLevel="china" />
-          </Card>
+      <div class="mt-20 md:h-170 h-[calc(100vh-130px)] flex md:flex-row flex-col justify-between">
+        <Card class="relative md:w-[calc(50%-10px)] md:h-full h-[calc(50%-10px)]">
+          <div class="absolute left-5 h-80% top-10%">
+            <Legend />
+          </div>
 
-          <Card class="md:flex-grow z-1 w-30 md:!bg-opacity-100 !bg-op-70 backdrop-blur">
+          <InteractiveMap
+            defaultLevel="china"
+            onChangeLevel={(level) => {
+              console.log('Change Level:', level)
+            }}
+          />
+        </Card>
+
+        <div class="flex flex-col justify-between md:w-[calc(50%-10px)] md:h-full h-[calc(50%-10px)]">
+          <CollapseCard>
             <RankingItem
               name="Provience Name"
               unit="unit"
               data={114}
               rank={1}
             />
-          </Card>
+          </CollapseCard>
+          <CollapseCard>CHART</CollapseCard>
         </div>
       </div>
     </Section>

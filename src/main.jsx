@@ -16,9 +16,17 @@ render(
 // DBG
 
 function checkAndScroll () {
-  if (window.scrollY < window.innerHeight) {
-    window.scrollTo({ top: window.innerHeight, behavior: 'auto' })
-    requestAnimationFrame(checkAndScroll)
+  if (!document.getElementById('root')) {
+    window.onload = checkAndScroll
+    return
+  }
+  if (document.getElementById('root').scrollTop < window.innerHeight) {
+    // window.scrollTo({ top: window.innerHeight, behavior: 'auto' })
+    // requestAnimationFrame(checkAndScroll)
+    document
+      .getElementById('root')
+      .scrollTo({ top: window.innerHeight, behavior: 'auto' })
+    setTimeout(checkAndScroll, 100)
   }
 }
 if (import.meta.env.DEV) {

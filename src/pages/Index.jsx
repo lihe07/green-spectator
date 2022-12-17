@@ -13,7 +13,7 @@ import AboutUs from './Index/AboutUs'
 export default () => {
   onMount(() => {
     const root = document.getElementById('root')
-    root.className = 'h-screen w-screen overflow-y-scroll md:snap-none snap-y'
+    root.className = 'h-screen w-screen overflow-y-scroll'
   })
   return (
     <>

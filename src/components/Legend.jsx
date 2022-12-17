@@ -6,7 +6,7 @@ export default (props_) => {
     direction: 'right'
   })
   return (
-    <Card class="md:w-18 w-7 relative bg-gradient-linear bg-op-10 from-red to-green z1">
+    <Card class="h-full md:w-10 w-7 relative bg-gradient-linear bg-op-10 from-red to-green z1">
       <div class="w-full h-full op-50 bg-dark rounded-xl" />
       {/* When shallow screen: hide numbers */}
       <div class="w-full h-90% absolute top-4% left-0 md:op-100 op-0">
@@ -24,8 +24,8 @@ export default (props_) => {
               <div
                 class="bg-white h-1 m-r-2"
                 classList={{
-                  'w-22': num % 50 === 0,
-                  'w-20': num % 50 !== 0
+                  'w-12': num % 50 === 0,
+                  'w-10': num % 50 !== 0
                 }}
               />
               <span
