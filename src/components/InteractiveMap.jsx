@@ -139,6 +139,10 @@ export default (props) => {
       // Double Click, Back to default
       ele = null
     }
+    if (!ele?.id) {
+      // Only elements that have id can be clicked
+      ele = null
+    }
 
     currentLevel = ele?.id || defaultLevel
 
