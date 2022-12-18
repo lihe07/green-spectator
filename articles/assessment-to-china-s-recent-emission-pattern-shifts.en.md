@@ -1,9 +1,9 @@
 ---
-title:"Assessment to China's Recent Emission Pattern Shifts"
-description:"This article assesses current green house gas emission effect considering recent developments such as the COVID-19 epidemic"
+title: "Assessment to China's Recent Emission Pattern Shifts"
+description: "This article assesses current green house gas emission effect considering recent developments such as the COVID-19 epidemic"
 language "en"
 tags: ['Science Article']
-cover:"./assessment-to-china-s-recent-emission-pattern-shifts/cover.jpg"
+cover: "./assessment-to-china-s-recent-emission-pattern-shifts/cover.jpg"
 date: 2022-17-14T06:30:00+08:00
 ---
 ## Abstract
