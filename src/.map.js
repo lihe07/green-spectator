@@ -2,7 +2,7 @@ export default [
   {
     name: 'assessment-to-china-s-recent-emission-pattern-shifts',
     file: 'assessment-to-china-s-recent-emission-pattern-shifts.en.md',
-    meta: {"title":"Assessment to China's Recent Emission Pattern Shifts","description":"This article assesses current green house gas emission effect considering recent developments such as the COVID-19 epidemic","language":"en","tags":["Science Article"],"cover":"./assessment-to-china-s-recent-emission-pattern-shifts/cover.jpg","date":"2023-05-13T22:30:00.000Z"},
+    meta: {"title":"Assessment to China's Recent Emission Pattern Shifts","description":"This article assesses current green house gas emission effect considering recent developments such as the COVID-19 epidemic","language":"en","tags":["Science Article"],"cover":"./assessment-to-china-s-recent-emission-pattern-shifts/cover.jpg","date":"2022-12-13T22:30:00.000Z"},
     body: async () => await import('../articles/assessment-to-china-s-recent-emission-pattern-shifts.en.md')
   },
   {
