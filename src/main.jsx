@@ -30,5 +30,5 @@ function checkAndScroll () {
   }
 }
 if (import.meta.env.DEV) {
-  checkAndScroll()
+  // checkAndScroll()
 }
