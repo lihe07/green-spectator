@@ -1,12 +1,11 @@
 import * as d3 from 'd3'
 
-import { createEffect, createSignal, onMount } from 'solid-js'
+import { createEffect, onMount } from 'solid-js'
 
 import { useAppContext } from '../AppContext'
 
 // const api = 'https://geojson.cn/api/data/{level}.json'
 import mapUrl from '../assets/china.json?url'
-import { svg } from 'd3'
 const api = mapUrl
 
 async function getGeoJson (level) {
