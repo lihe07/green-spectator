@@ -35,13 +35,15 @@ async function parseArticles () {
   await fs.writeFile('./src/.map.json', JSON.stringify(mapJson))
 }
 
-export default () => {
-  return {
-    name: 'parseArticles',
-    enforce: 'pre',
-    async buildStart () {
-      console.log('parseArticles buildStart')
-      await parseArticles()
-    }
-  }
-}
+parseArticles()
+
+// export default () => {
+//   return {
+//     name: 'parseArticles',
+//     enforce: 'pre',
+//     async buildStart () {
+//       console.log('parseArticles buildStart')
+//       await parseArticles()
+//     }
+//   }
+// }

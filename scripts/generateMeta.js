@@ -1,4 +1,4 @@
-import routes from './routes.js'
+import routes from './routes'
 import path from 'path'
 import { readFile, writeFile, mkdir } from 'fs/promises'
 import pkg from 'htmlnano'
