@@ -9,14 +9,6 @@ const colors = [
 ]
 
 export default (props) => {
-  const [resetting, setResetting] = createSignal(true)
-
-  createEffect(() => {
-    props.current() // Make this effect depends on current
-    setResetting(false) // Reset animation
-    requestAnimationFrame(() => setResetting(true))
-  })
-
   return (
     <div
       class="absolute overflow-hidden md:w-125 m-x-10 rounded-6 dark:bg-true-gray-9 light:bg-teal-9 !bg-opacity-40 backdrop-blur-lg top-10 "
@@ -44,13 +36,11 @@ export default (props) => {
       </div>
       {/* Progress bar */}
       <div class="bg-true-gray-9 bg-opacity-40 h-4">
-        <Show when={resetting()}>
-          <Motion.div
-            class="bg-sky-5 h-full op-50 w-0"
-            animate={{ width: ['0%', '100%'] }}
-            transition={{ duration: props.duration, easing: 'linear' }}
-          />
-        </Show>
+        <Motion.div
+          class="bg-sky-5 h-full op-50 w-0"
+          animate={{ width: ['0%', '100%'] }}
+          transition={{ duration: props.duration, easing: 'linear' }}
+        />
       </div>
     </div>
   )

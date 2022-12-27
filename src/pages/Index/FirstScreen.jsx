@@ -3,6 +3,7 @@ import {
   createResource,
   createSignal,
   on,
+  Show,
   Suspense
 } from 'solid-js'
 
@@ -23,28 +24,17 @@ const videoList = [video1, video2, video3, video4]
 export default () => {
   const [current, setCurrent] = createSignal(0)
   const [loading, setLoading] = createSignal(true)
+  const [isPlaying, setIsPlaying] = createSignal(false)
   let video
   // let isFirst = true
   const [isFirst, setIsFirst] = createSignal(true)
 
   const videoCache = {}
 
-  function onLoaded () {
-    if (isFirst()) {
-      setLoading(false)
-      setIsFirst(false)
-    } else setTimeout(() => setLoading(false), 300)
-    // video.muted = true
-    const promise = video.play()
-    if (promise !== undefined) {
-      promise.catch(() => {
-        setTimeout(() => setLoading(true), (duration - 0.35) * 1000)
-        setTimeout(
-          () => setCurrent(current() + 1 > 3 ? 0 : current() + 1),
-          duration * 1000
-        )
-      })
-    }
+  function next () {
+    video.pause()
+    setIsPlaying(false)
+    setCurrent(current() + 1 > 3 ? 0 : current() + 1)
   }
 
   const [currentBlob, { refetch }] = createResource(async () => {
@@ -52,7 +42,6 @@ export default () => {
     console.log('Current', current(), url)
     if (videoCache[url]) {
       console.log('Cache hit')
-      onLoaded()
       return videoCache[url]
     }
     // Load to blob
@@ -61,10 +50,9 @@ export default () => {
     const video = URL.createObjectURL(blob)
     videoCache[url] = video
     console.log('Fetched', url, 'to', video)
-    onLoaded()
     return video
   })
-  createEffect(on(current, refetch))
+  createEffect(on(current, refetch, { defer: true }))
 
   return (
     <section class="w-full h-screen text-white relative">
@@ -93,26 +81,47 @@ export default () => {
           ref={video}
           src={currentBlob()}
           disablePictureInPicture="true"
-          referrerPolicy="no-referrer"
           muted="true"
           autoPlay="true"
           volume="0"
+          onCanPlay={() => {
+            console.log('Can play')
+            video.muted = true
+            const promise = video.play()
+            if (isFirst()) {
+              setLoading(false)
+              setIsFirst(false)
+            } else setTimeout(() => setLoading(false), 300)
+
+            setIsPlaying(true)
+
+            if (promise !== undefined) {
+              promise.catch((e) => {
+                console.log('Fallback to autoplay', e)
+                setTimeout(() => setLoading(true), (duration - 0.35) * 1000)
+                setTimeout(next, duration * 1000)
+              })
+            }
+          }}
           onTimeUpdate={() => {
             if (video.currentTime >= duration) {
-              setCurrent(current() + 1 > 3 ? 0 : current() + 1)
+              next()
             }
             if (duration - video.currentTime <= 0.35) {
-              // DBG
-              // video.currentTime = 0
-              // return
               setLoading(true)
             }
           }}
           class="w-full h-full object-cover"
         />
       </Suspense>
+      <Show when={isPlaying()}>
+        <FirstScreenBlock
+          loading={loading}
+          current={current}
+          duration={duration}
+        />
+      </Show>
 
-      <FirstScreenBlock current={current} duration={duration} />
       <FirstScreenScroll />
     </section>
   )
