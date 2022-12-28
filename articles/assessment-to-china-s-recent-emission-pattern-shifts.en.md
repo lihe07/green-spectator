@@ -13,24 +13,22 @@ The most recent energy revision led to an increase in reported national CO2 emis
 Key points in parts of Results and Discussion
 
 1. More than 50 % of China's carbon emission come from Raw coal combustion.
-2.  The Growth rate of carbon emission was still increasing despite COVID lock downs, although rising trends were mitigated
+2. The Growth rate of carbon emission was still increasing despite COVID lock downs, although rising trends were mitigated
 
-![ figure 1. Emission Data](./assessment-to-china-s-recent-emission-pattern-shifts/Emission Data.jpg)
-
-(Figure. 1)
+    ![EmissionData](./assessment-to-china-s-recent-emission-pattern-shifts/emission-data.jpg)
 
 3. Northern Provinces in China generally produce more carbon, tend to have higher intensity, and have higher per capita emissions
 
-![Figure 2](./assessment-to-china-s-recent-emission-pattern-shifts/Figure 2.png)
+    ![Figure2](./assessment-to-china-s-recent-emission-pattern-shifts/figure2.png)
 
-（Figure. 2）
+4. Inconsistency between national data and provincial aggregated data was mainly due to intraregional electric and heat transport statistic errors.
 
-4. Inconsistency between national data and provincial aggregated data was mainly due to intraregional electric and heat transport statistic errors.  
-
-![Figure 3](./assessment-to-china-s-recent-emission-pattern-shifts/Figure 3.png)
+    ![Figure3](./assessment-to-china-s-recent-emission-pattern-shifts/figure3.png)
 
 ## Conclusion
 
 China is still in the process of industrialization and urbanization, and therefore facing a series of challenges on the road toward net-zero emissions. The first challenge for policymakers is to promote a systemic reform of its energy statistics. Suggestions for the reform of the energy statistics system, such as collecting data through more on-site surveys and using remote sensing technologies have also been discussed. On the other hand, de-carbonizing the energy mix could be carried out by reducing the dependence on coal consumption, supporting renewable energy technologies through subsidies and carbon pricing, and accelerating the construction of smart energy systems to maximize energy utilization. Overall, China's de-carbonization of the energy mix cannot be accomplished overnight, it will inevitably undergo a long-term process.
 
 Access for the Original Article: [DOI-10.1029/2021EF002241](https://doi.org/10.1029/2021EF002241)
+
+Guan, Y., Shan, Y., Huang, Q., Chen, H., Wang, D., & Hubacek, K. (2021). Assessment to China's recent emission pattern shifts. *Earth's Future*, 9, e2021EF002241.

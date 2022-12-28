@@ -31,7 +31,11 @@ function resize (container, svg, g, transform) {
   // translate the map to center
 
   if (!transform) {
-    g.attr('transform', `translate(${width / 2}, ${height / 2})`)
+    if (window.innerWidth < 768) {
+      g.attr('transform', `translate(${width / 2}, ${height / 2}) scale(0.8)`)
+    } else {
+      g.attr('transform', `translate(${width / 2}, ${height / 2})`)
+    }
   } else {
     const deltaX = (container.clientWidth - transform.clientWidth) / 2
     const deltaY = (container.clientHeight - transform.clientHeight) / 2
@@ -89,13 +93,16 @@ function getCentroid (ele) {
   return [bbox.x + bbox.width / 2, bbox.y + bbox.height / 2]
 }
 
-const MARGIN = 20
+const MARGIN = 50
 function getScale (ele, container) {
-  if (!ele) return 1
+  if (!ele) {
+    // If is mobile: 0.7 else: 1
+    return window.innerWidth < 768 ? 0.8 : 1
+  }
   const bbox = ele.getBBox()
   const widthScale = (container.clientWidth - MARGIN) / bbox.width
   const heightScale = (container.clientHeight - MARGIN) / bbox.height
-  return Math.min(widthScale, heightScale)
+  return Math.min(widthScale, heightScale, 5)
 }
 
 export default (props) => {
@@ -149,9 +156,9 @@ export default (props) => {
 
     const centroid = getCentroid(ele)
     const scale = getScale(ele, container)
-    transform.x = containerX - centroid[0] * scale
+    transform.x = containerX - centroid[0] * scale // offset for legend
     transform.y = containerY - centroid[1] * scale
-    transform.k = ele ? scale : 1
+    transform.k = scale
 
     map.g.selectAll('path').classed(
       'active',
@@ -180,7 +187,7 @@ export default (props) => {
 
   return (
     <div
-      claas="w-full max-w-full overflow-hidden"
+      claas="w-full max-w-full overflow-hidden md:scale-100 scale-50"
       style={{ height: '100%' }}
       ref={container}
     />

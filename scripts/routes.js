@@ -32,27 +32,25 @@ export default async () => {
       if (article.meta.language === 'zh') {
         articles[article.name].meta.descriptionZh = article.meta.description
         articles[article.name].meta.keywordsZh = article.meta.tags.join(', ')
-        articles[article.name].titleZh = article.meta.title
+        articles[article.name].titleZh =
+          'Green Spectator - ' + article.meta.title
       } else {
         articles[article.name].meta.descriptionEn = article.meta.description
         articles[article.name].meta.keywordsEn = article.meta.tags.join(', ')
-        articles[article.name].titleEn = article.meta.title
+        articles[article.name].titleEn =
+          'Green Spectator - ' + article.meta.title
       }
     } else {
       articles[article.name] = {
         path: `/articles/${article.name}`,
         meta: {
-          descriptionZh:
-            article.meta.language === 'zh' ? article.meta.description : '',
-          descriptionEn:
-            article.meta.language === 'en' ? article.meta.description : '',
-          keywordsZh:
-            article.meta.language === 'zh' ? article.meta.tags.join(', ') : '',
-          keywordsEn:
-            article.meta.language === 'en' ? article.meta.tags.join(', ') : ''
+          descriptionZh: article.meta.description,
+          descriptionEn: article.meta.description,
+          keywordsZh: article.meta.tags.join(', '),
+          keywordsEn: article.meta.tags.join(', ')
         },
-        titleZh: article.meta.language === 'zh' ? article.meta.title : '',
-        titleEn: article.meta.language === 'en' ? article.meta.title : ''
+        titleZh: 'Green Spectator - ' + article.meta.title,
+        titleEn: 'Green Spectator - ' + article.meta.title
       }
     }
   }

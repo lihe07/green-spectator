@@ -7,14 +7,14 @@ import Articles from './Index/Articles'
 import Footer from './Index/Footer'
 
 import Section from '../components/Section'
-import { onMount } from 'solid-js'
+// import { onMount } from 'solid-js'
 import AboutUs from './Index/AboutUs'
 
 export default () => {
-  onMount(() => {
-    const root = document.getElementById('root')
-    root.className = 'h-screen w-screen overflow-y-scroll'
-  })
+  // onMount(() => {
+  //   const root = document.getElementById('root')
+  //   root.className = 'h-screen w-screen overflow-y-scroll'
+  // })
   return (
     <>
       <FirstScreen />

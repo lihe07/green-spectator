@@ -13,19 +13,28 @@ import { createResource } from 'solid-js'
 import map from '../.map.js'
 
 export default ({ params }) => {
-  let fetcher
+  let fetcherCN, fetcherEN, dataCN, dataEN
   for (const article of map) {
     if (article.name === params.name) {
       // TODO: Add language support
       console.log(article.file)
-      fetcher = article.body
+      if (article.meta.language === 'zh') {
+        fetcherCN = article.body
+        dataCN = article
+      } else {
+        fetcherEN = article.body
+        dataEN = article
+      }
     }
   }
 
-  const [markdown] = createResource(async () => (await fetcher()).default)
+  const [markdownCN] = createResource(async () => (await fetcherCN()).default)
+  const [markdownEN] = createResource(async () => (await fetcherEN()).default)
 
   return {
-    ...map[params.name],
-    markdown
+    dataCN,
+    dataEN,
+    markdownCN,
+    markdownEN
   }
 }

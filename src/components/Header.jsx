@@ -12,10 +12,6 @@ const routes = [
   {
     name: 'Articles',
     path: '/articles'
-  },
-  {
-    name: 'Anyhow',
-    path: '/anyhow'
   }
 ]
 
