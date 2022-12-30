@@ -5,8 +5,8 @@ import { createEffect, onMount } from 'solid-js'
 import { useAppContext } from '../AppContext'
 
 // const api = 'https://geojson.cn/api/data/{level}.json'
-import mapUrl from '../assets/china.json?url'
-const api = mapUrl
+// import mapUrl from '../assets/china.json?url'
+const api = "https://cdnoss.kaoshixing.com/ksx_prod/485050/file/sign/20221230/1623192915.txt"
 
 async function getGeoJson (level) {
   const res = await fetch(api.replace('{level}', level))

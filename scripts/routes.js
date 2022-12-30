@@ -21,6 +21,17 @@ export default async () => {
       },
       titleZh: 'Green Spectator - 文章',
       titleEn: 'Green Spectator - Articles'
+    },
+    {
+      path: '/404',
+      meta: {
+        descriptionZh: '404',
+        descriptionEn: '404',
+        keywordsZh: '404, 示例',
+        keywordsEn: '404, demo'
+      },
+      titleZh: 'Green Spectator - 404',
+      titleEn: 'Green Spectator - 404'
     }
   ]
   const articles = {}

@@ -7,6 +7,7 @@ const { process } = pkg
 
 function destinationPath (path) {
   if (path === '/') return '/index.html'
+  if (path === '/404') return '/404.html'
   return path + '/index.html'
 }
 

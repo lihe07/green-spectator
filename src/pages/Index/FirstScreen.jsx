@@ -7,10 +7,10 @@ import {
   Suspense
 } from 'solid-js'
 
-import video1 from '../../assets/videos/1.mp4'
-import video2 from '../../assets/videos/2.mp4'
-import video3 from '../../assets/videos/3.mp4'
-import video4 from '../../assets/videos/4.mp4'
+// import video1 from '../../assets/videos/1.mp4'
+// import video2 from '../../assets/videos/2.mp4'
+// import video3 from '../../assets/videos/3.mp4'
+// import video4 from '../../assets/videos/4.mp4'
 
 import logo from '../../assets/images/logo.svg'
 
@@ -19,7 +19,13 @@ import FirstScreenScroll from './FirstScreen/FirstScreenScroll'
 
 const duration = 5 // Play for 5sec
 
-const videoList = [video1, video2, video3, video4]
+// const videoList = [video1, video2, video3, video4]
+const videoList = [
+  'https://cdnoss.kaoshixing.com/ksx_prod/485050/file/sign/20221229/506521865.mp4',
+  'https://cdnoss.kaoshixing.com/ksx_prod/485050/file/sign/20221230/-686704155.mp4',
+  'https://cdnoss.kaoshixing.com/ksx_prod/485050/file/sign/20221230/-2028839248.mp4',
+  'https://cdnoss.kaoshixing.com/ksx_prod/485050/file/sign/20221230/-1589088106.mp4'
+]
 
 export default () => {
   const [current, setCurrent] = createSignal(0)
