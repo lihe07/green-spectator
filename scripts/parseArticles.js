@@ -1,6 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import yaml from 'js-yaml'
+import { existsSync } from 'fs'
 
 // Run before vite
 
@@ -71,16 +72,11 @@ async function parseArticles () {
   // Some dirty patches...
 
   // Copy the articles folder to /public/articles
-  await fs.rm('./public/articles', { recursive: true })
+  if (existsSync('./public/articles')) {
+    await fs.rm('./public/articles', { recursive: true })
+  }
   // Recursively copy the articles folder
   await copyRecursive('./articles', './public/articles')
-  // // For every folder in the articles folder, copy its contents to /public
-  // for (const folder of await fs.readdir('./articles')) {
-  //   if ((await fs.stat('./articles/' + folder)).isDirectory()) {
-  //     await fs.rm('./public/' + folder, { recursive: true })
-  //     await copyRecursive('./articles/' + folder, './public/' + folder)
-  //   }
-  // }
 }
 
 parseArticles()
