@@ -68,10 +68,19 @@ async function parseArticles () {
   await fs.writeFile('./src/.map.js', map + ']')
   await fs.writeFile('./src/.map.json', JSON.stringify(mapJson))
 
+  // Some dirty patches...
+
   // Copy the articles folder to /public/articles
   await fs.rm('./public/articles', { recursive: true })
   // Recursively copy the articles folder
   await copyRecursive('./articles', './public/articles')
+  // // For every folder in the articles folder, copy its contents to /public
+  // for (const folder of await fs.readdir('./articles')) {
+  //   if ((await fs.stat('./articles/' + folder)).isDirectory()) {
+  //     await fs.rm('./public/' + folder, { recursive: true })
+  //     await copyRecursive('./articles/' + folder, './public/' + folder)
+  //   }
+  // }
 }
 
 parseArticles()

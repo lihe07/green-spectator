@@ -1,5 +1,5 @@
 import { For } from 'solid-js'
-import map from '../.map'
+import map from '../.map.json'
 import { Link } from '@solidjs/router'
 
 export default () => {
