@@ -22,7 +22,7 @@ export default ({ params }) => {
 
       data[article.meta.language] = {
         fetcher: article.body,
-        data: article
+        ...article
       }
     }
   }

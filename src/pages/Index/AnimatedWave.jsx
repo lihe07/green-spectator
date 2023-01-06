@@ -1,5 +1,5 @@
 import { Motion } from '@motionone/solid'
-import { createSignal, onMount } from 'solid-js'
+import { createSignal, onMount, Show } from 'solid-js'
 
 export default (props) => {
   const [left, setLeft] = createSignal(-50)
@@ -29,26 +29,20 @@ export default (props) => {
   }
   onMount(() => {
     const root = document.getElementById('root')
-
-    root.addEventListener(
-      'scroll',
-      props.type === 'asScroll' ? asScroll : immediate
-    )
-    return () =>
-      root.removeEventListener(
-        'scroll',
-        props.type === 'asScroll' ? asScroll : immediate
-      )
+    const listener = props.type === 'asScroll' ? asScroll : immediate
+    root.addEventListener('scroll', listener)
+    return () => root.removeEventListener('scroll', listener)
   })
+  const duration = () => (props.type === 'asScroll' ? 0.1 : 0.5)
   return (
     <div
       ref={container}
       class="w-full h-30vw max-h-70 relative overflow-hidden"
     >
       <Motion.div
-        class="w-150% h-full absolute dark:color-true-gray-8 light:color-teal-9 transition-colors-300"
+        class="w-150% h-full absolute transition-colors-300 dark:color-true-gray-8 light:color-teal-9"
         animate={{ left: left() + '%' }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: duration(), ease: 'easeOut' }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -56,11 +50,30 @@ export default (props) => {
           class="h-full w-full"
           preserveAspectRatio="none"
         >
-          <path
-            fill="currentColor"
-            fill-opacity="1"
-            d="M0,224L80,202.7C160,181,320,139,480,144C640,149,800,203,960,234.7C1120,267,1280,277,1360,282.7L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-          />
+          <Show when={!props.reverse}>
+            <path
+              fill="currentColor"
+              fill-opacity="1"
+              d="M0,224L80,202.7C160,181,320,139,480,144C640,149,800,203,960,234.7C1120,267,1280,277,1360,282.7L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+            />
+          </Show>
+          <Show when={props.reverse}>
+            <defs>
+              <mask id="mask">
+                <rect width="1440" height="320" fill="white" />
+                <path
+                  d="M0,224L80,202.7C160,181,320,139,480,144C640,149,800,203,960,234.7C1120,267,1280,277,1360,282.7L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+                  fill="black"
+                />
+              </mask>
+            </defs>
+            <rect
+              width="1440"
+              height="320"
+              fill="currentColor"
+              mask="url(#mask)"
+            />
+          </Show>
         </svg>
       </Motion.div>
     </div>

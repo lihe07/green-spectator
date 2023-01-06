@@ -3,6 +3,7 @@ import { A, useLocation } from '@solidjs/router'
 import { createSignal, For, Show } from 'solid-js'
 import { useAppContext } from '../AppContext'
 import SideMenu from './SideMenu'
+import logo from '../assets/images/logo.svg'
 
 const routes = [
   {
@@ -41,14 +42,25 @@ export default () => {
       <div class="max-w-300 px-10 w-full ma flex justify-between items-center text-5 color-white relative">
         {/* Left */}
         <div class="flex items-center ">
-          <span class="">LOGO</span>
-          <div class="ml-20 flex md:op-100 md:w-auto w-0 max-w-100% md:pointer-events-auto pointer-events-none op-0 transition">
+          <A
+            href="/"
+            class="flex items-center transition-all decoration-none"
+            inactiveClass="op-80 hover:op-100 active:op-70 active:scale-98"
+            activeClass="op-100 "
+            end={true}
+          >
+            <img class="w-10 h-10" src={logo} alt="Logo" />
+            <span class="ml-3 color-white md:block hidden mb-0.5">
+              Green Spectator
+            </span>
+          </A>
+          <div class="ml-20 md:flex hidden max-w-100% md:pointer-events-auto pointer-events-none">
             <For each={routes}>
               {(route) => (
                 <div
                   class="mx-1 rounded-lg bg-sky-3 transition-all"
                   classList={{
-                    'bg-op-30 op-100 active': location.pathname === route.path,
+                    'bg-op-30 op-100': location.pathname === route.path,
                     'bg-op-0 op-70 hover:op-100 active:op-70 active:scale-93':
                       location.pathname !== route.path
                   }}
@@ -68,7 +80,7 @@ export default () => {
         {/* Right */}
         <div class="flex items-center">
           <span
-            class=" transition cursor-pointer md:op-70 op-0 md:pointer-events-auto pointer-events-none mb-1 hover:op-100 active:scale-93 w-20 text-center"
+            class="transition cursor-pointer md:op-70 op-0 md:pointer-events-auto pointer-events-none mb-0.5 hover:op-100 active:scale-93 w-20 text-center"
             onClick={() => {
               if (isCooling()) return
               setIsCooling(true)

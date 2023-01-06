@@ -8,7 +8,6 @@ import generateMeta from './scripts/generateMeta'
 import generateSitemap from './scripts/generateSitemap'
 
 export default defineConfig({
-  // server: { https: true },
   plugins: [
     unocss(),
     generateMeta(),

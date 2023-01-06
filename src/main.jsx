@@ -15,20 +15,20 @@ render(
 
 // DBG
 
+const target = window.innerHeight * 6
 function checkAndScroll () {
   if (!document.getElementById('root')) {
     window.onload = checkAndScroll
     return
   }
-  if (document.getElementById('root').scrollTop < window.innerHeight) {
-    // window.scrollTo({ top: window.innerHeight, behavior: 'auto' })
+  if (location.href !== '/') return
+  if (document.getElementById('root').scrollTop < target) {
+    // window.scrollTo({ top: target, behavior: 'auto' })
     // requestAnimationFrame(checkAndScroll)
-    document
-      .getElementById('root')
-      .scrollTo({ top: window.innerHeight, behavior: 'auto' })
+    document.getElementById('root').scrollTo({ top: target, behavior: 'auto' })
     setTimeout(checkAndScroll, 100)
   }
 }
 if (import.meta.env.DEV) {
-  // checkAndScroll()
+  checkAndScroll()
 }

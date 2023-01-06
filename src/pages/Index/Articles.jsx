@@ -1,7 +1,8 @@
 import Section from '../../components/Section'
 import LongArticleBlock from './Articles/LongArticleBlock'
-
 import Title from '../../components/CenterTitle'
+
+import placeholder from '../../assets/images/ba.jpg'
 
 export default () => {
   return (
@@ -13,10 +14,10 @@ export default () => {
         title={'Articles'}
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
       />
-      <LongArticleBlock />
-      <LongArticleBlock />
-      TODO
-      <div class="h-100" />
+      <LongArticleBlock cover={placeholder} />
+      <LongArticleBlock reverse={true} cover={placeholder} />
+
+      <div class="h-50 color-white">TODO: Article Carusal</div>
     </Section>
   )
 }
