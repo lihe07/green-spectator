@@ -15,13 +15,13 @@ render(
 
 // DBG
 
-const target = window.innerHeight * 6
+const target = window.innerHeight * 5.4
 function checkAndScroll () {
   if (!document.getElementById('root')) {
     window.onload = checkAndScroll
     return
   }
-  if (location.href !== '/') return
+  if (location.pathname !== '/') return
   if (document.getElementById('root').scrollTop < target) {
     // window.scrollTo({ top: target, behavior: 'auto' })
     // requestAnimationFrame(checkAndScroll)

@@ -3,6 +3,8 @@ import LongArticleBlock from './Articles/LongArticleBlock'
 import Title from '../../components/CenterTitle'
 
 import placeholder from '../../assets/images/ba.jpg'
+import { Swiper, SwiperSlide } from 'swiper/solid'
+import ArticlesCarousel from './Articles/ArticlesCarousel'
 
 export default () => {
   return (
@@ -16,8 +18,7 @@ export default () => {
       />
       <LongArticleBlock cover={placeholder} />
       <LongArticleBlock reverse={true} cover={placeholder} />
-
-      <div class="h-50 color-white">TODO: Article Carusal</div>
+      <ArticlesCarousel />
     </Section>
   )
 }

@@ -18,7 +18,7 @@ export default (props) => {
             <span>:ORG:</span>
             <span class="ml-2">Organization Name</span>
           </p>
-          <h1 class="text-8 my-4 ">Article TITLE</h1>
+          <h1 class="text-8 my-4 tracking-wide">Article TITLE</h1>
           <p class="text-5 m-0 op-70 leading-relaxed">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             saepe minima?
