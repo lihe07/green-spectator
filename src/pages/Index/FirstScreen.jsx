@@ -45,9 +45,9 @@ export default () => {
 
   const [currentBlob, { refetch }] = createResource(async () => {
     const url = videoList[current()]
-    console.log('Current', current(), url)
+    // console.log('Current', current(), url)
     if (videoCache[url]) {
-      console.log('Cache hit')
+      // console.log('Cache hit')
       return videoCache[url]
     }
     // Load to blob
@@ -55,7 +55,7 @@ export default () => {
     const blob = await response.blob()
     const video = URL.createObjectURL(blob)
     videoCache[url] = video
-    console.log('Fetched', url, 'to', video)
+    // console.log('Fetched', url, 'to', video)
     return video
   })
   createEffect(on(current, refetch, { defer: true }))
@@ -91,7 +91,6 @@ export default () => {
           autoPlay="true"
           volume="0"
           onCanPlay={() => {
-            console.log('Can play')
             video.muted = true
             const promise = video.play()
             if (isFirst()) {

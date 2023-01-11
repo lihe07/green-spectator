@@ -1,6 +1,5 @@
 import FirstScreen from './Index/FirstScreen'
 import Ranking from './Index/Ranking'
-import Prediction from './Index/Prediction'
 import AnimatedWave from './Index/AnimatedWave'
 import TakeAction from './Index/TakeAction'
 import Articles from './Index/Articles'
@@ -19,7 +18,7 @@ export default () => {
     <>
       <FirstScreen />
       <Ranking />
-      <Prediction />
+      {/* <Prediction /> */}
       <Section animOnly={true}>
         <AnimatedWave type="immediate" />
         <div class="dark:bg-true-gray-8 light:bg-teal-9 transition-colors-300">

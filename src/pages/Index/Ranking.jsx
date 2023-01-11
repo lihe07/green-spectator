@@ -1,4 +1,4 @@
-import { For, Show, createResource, createSignal } from 'solid-js'
+import { For, Show, createMemo, createResource, createSignal } from 'solid-js'
 import { csv } from 'd3'
 
 import dataUrl from '../../assets/data.csv?url'
@@ -12,24 +12,56 @@ import Title from '../../components/Title'
 
 import RankingItem from './Ranking/RankingItem'
 import CollapseCard from './Ranking/CollapseCard'
+import Chart from './Ranking/Chart'
 // import Loading from '../../components/Loading'
 
 async function fetcher () {
-  const data = await csv(dataUrl)
-  console.log(data)
+  const rawData = await csv(dataUrl)
 
-  // Find the max value and min value
-  let max = 0
-  let min = 0
+  const data = {}
+  // {
+  //   2023: { 110000: { Pollution A: 123, ... } },
+  //   year: { region: { Poll: ... } }
+  // }
 
-  for (const row of data) {
-    if (row.Total > max) max = row.Total
-    if (row.Total < min) min = row.Total
+  const maxOfYear = {}
+  const minOfYear = {}
+
+  for (const row of rawData) {
+    const year = parseInt(row.Year)
+    const region = parseInt(row.Code)
+    if (!data[year]) data[year] = {}
+    data[year][region] = {}
+    for (const key in row) {
+      if (key === 'Year' || key === 'Code') continue
+      const num = parseFloat(row[key])
+      data[year][region][key] = num
+      if (key !== 'Total') {
+        maxOfYear[year] = Math.max(maxOfYear[year] || num, num)
+        minOfYear[year] = Math.min(minOfYear[year] || num, num)
+      }
+    }
   }
 
-  function numberToHexColor (number) {}
+  return { data, maxOfYear, minOfYear }
+}
 
-  return { data, numberToHexColor, max, min }
+function numberToHexColor (n, max, min) {
+  const range = max - min
+  const percent = (n - min) / range
+  const hue = (1 - percent) * 120
+  return `hsl(${hue}, 100%, 50%)`
+}
+
+function sort (data) {
+  if (!data) return []
+  // Gives: [ { Code: 110000, Total: ... } ]
+  const arr = Object.entries(data).map(([key, value]) => ({
+    Code: key,
+    ...value
+  }))
+  arr.sort((a, b) => b.Total - a.Total)
+  return arr
 }
 
 export default () => {
@@ -37,7 +69,16 @@ export default () => {
 
   const [collapseId, setCollapseId] = createSignal(0)
 
+  const [currentLevel, setCurrentLevel] = createSignal('china')
+  const [currentYear, setCurrentYear] = createSignal(new Date().getFullYear())
+
   const res = createResource(fetcher)[0]
+
+  const maxOfYear = () => res().maxOfYear[currentYear()]
+  const minOfYear = () => res().minOfYear[currentYear()]
+  const numberToHexColor = (n) => numberToHexColor(n, maxOfYear(), minOfYear())
+
+  const sortedData = createMemo(() => sort(res()?.data[currentYear()]))
 
   return (
     <Section id="ranking">
@@ -51,16 +92,15 @@ export default () => {
         <Show when={res()}>
           <Card class="relative md:w-[calc(50%-10px)] md:h-full h-[calc(50%-10px)]">
             <div class="absolute left-5 h-80% top-10%">
-              <Legend max={res().max} min={res().min} />
+              <Legend max={maxOfYear()} min={minOfYear()} />
             </div>
 
             <InteractiveMap
               defaultLevel="china"
-              onChangeLevel={(level) => {
-                console.log('Change Level:', level)
-              }}
-              data={res().data}
-              numberToHexColor={res().numberToHexColor}
+              currentLevel={currentLevel()}
+              onChangeLevel={setCurrentLevel}
+              data={res().data[currentYear()]}
+              numberToHexColor={numberToHexColor}
             />
           </Card>
 
@@ -72,13 +112,19 @@ export default () => {
               title="Ranking Title"
             >
               {/* <RankingItem name="Provi Name" unit="unit" data={114} rank={1} /> */}
-              <For each={res().data}>
+              <For each={sortedData()}>
                 {(row, index) => (
                   <RankingItem
                     name={row.Code}
                     unit="unit"
                     data={row.Total}
                     rank={index() + 1}
+                    onClick={() =>
+                      setCurrentLevel(
+                        currentLevel() === row.Code ? 'china' : row.Code
+                      )
+                    }
+                    active={currentLevel() === row.Code}
                   />
                 )}
               </For>
@@ -89,7 +135,7 @@ export default () => {
               set={setCollapseId}
               title="Chart Title"
             >
-              <h1 class="color-white text-center">CHART</h1>
+              <Chart currentLevel={currentLevel()} data={res().data} />
             </CollapseCard>
           </div>
         </Show>

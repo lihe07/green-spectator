@@ -7,6 +7,7 @@ import NarrowArticleBlock from './NarrowArticleBlock'
 
 import cover from '../../../assets/images/ba.jpg'
 import { For } from 'solid-js'
+import Section from '../../../components/Section'
 const articles = [
   {
     cover,
@@ -33,27 +34,29 @@ const articles = [
 
 export default () => {
   return (
-    <div class="w-full h-70">
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={40}
-        navigation={true}
-        modules={[Navigation]}
-        breakpoints={{
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40
-          }
-        }}
-      >
-        <For each={articles}>
-          {(article) => (
-            <SwiperSlide>
-              <NarrowArticleBlock {...article} />
-            </SwiperSlide>
-          )}
-        </For>
-      </Swiper>
-    </div>
+    <Section animOnly={true}>
+      <div class="w-full h-70">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={40}
+          navigation={true}
+          modules={[Navigation]}
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40
+            }
+          }}
+        >
+          <For each={articles}>
+            {(article) => (
+              <SwiperSlide>
+                <NarrowArticleBlock {...article} />
+              </SwiperSlide>
+            )}
+          </For>
+        </Swiper>
+      </div>
+    </Section>
   )
 }

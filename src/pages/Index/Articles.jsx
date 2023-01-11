@@ -3,7 +3,6 @@ import LongArticleBlock from './Articles/LongArticleBlock'
 import Title from '../../components/CenterTitle'
 
 import placeholder from '../../assets/images/ba.jpg'
-import { Swiper, SwiperSlide } from 'swiper/solid'
 import ArticlesCarousel from './Articles/ArticlesCarousel'
 
 export default () => {

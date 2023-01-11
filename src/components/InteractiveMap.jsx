@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-import { createEffect, onMount } from 'solid-js'
+import { createEffect, createResource, onMount } from 'solid-js'
 
 import { useAppContext } from '../AppContext'
 
@@ -49,7 +49,7 @@ function resize (container, svg, g, transform) {
   }
 }
 
-async function initMap (container, featuresPromise, onClick) {
+function initMap (container, features, onClick) {
   const projection = d3.geoMercator().center([155, 15]).scale(530)
   // .translate([width / 2, height / 2])
   const path = d3.geoPath().projection(projection)
@@ -66,7 +66,7 @@ async function initMap (container, featuresPromise, onClick) {
 
   const g = svg.append('g') // map group
   g.selectAll('path')
-    .data(await featuresPromise)
+    .data(features)
     .enter()
     .append('path')
     .attr('d', path)
@@ -108,22 +108,12 @@ function getScale (ele, container) {
 
 export default (props) => {
   let container
-  // Disable eslint because defaultLevel is not reactive
-  // eslint-disable-next-line solid/reactivity
-  const { defaultLevel } = props
-
-  // const [currentLevel, setCurrentLevel] = createSignal(defaultLevel)
-  let currentLevel = defaultLevel
   const { dark } = useAppContext()
 
-  // Preparation: loading data
-  const featuresPromise = getGeoJson(defaultLevel)
+  const featuresPromise = getGeoJson(null)
 
-  let map
-  let transform
-  onMount(async () => {
-    // initMap(container, featuresPromise)
-    map = await initMap(container, featuresPromise, onClick)
+  featuresPromise.then((features) => {
+    map = initMap(container, features, onClick)
 
     resize(container, map.svg, map.g)
     new ResizeObserver(() =>
@@ -131,18 +121,20 @@ export default (props) => {
     ).observe(container)
     coloring(map.g, dark())
   })
+
+  // Preparation: loading data
+  createEffect(() => {
+    console.log('change level', props.currentLevel)
+    changeTo(props.currentLevel)
+  })
+
+  let map
+  let transform
+
   createEffect(() => coloring(map?.g, dark())) // Theme
 
   function onClick (ele) {
-    const containerX = container.clientWidth / 2
-    const containerY = container.clientHeight / 2
-
-    transform = {
-      clientWidth: container.clientWidth,
-      clientHeight: container.clientHeight
-    }
-
-    if (currentLevel === ele?.id) {
+    if (props.currentLevel === ele?.id) {
       // Double Click, Back to default
       ele = null
     }
@@ -151,10 +143,23 @@ export default (props) => {
       ele = null
     }
 
-    currentLevel = ele?.id || defaultLevel
+    changeTo(ele?.id || 'china')
+  }
 
-    props.onChangeLevel(currentLevel)
+  function changeTo (level) {
+    if (!map) return
 
+    const containerX = container.clientWidth / 2
+    const containerY = container.clientHeight / 2
+
+    transform = {
+      clientWidth: container.clientWidth,
+      clientHeight: container.clientHeight
+    }
+
+    props.onChangeLevel(level)
+
+    const ele = document.getElementById(level)
     const centroid = getCentroid(ele)
     const scale = getScale(ele, container)
     transform.x = containerX - centroid[0] * scale // offset for legend

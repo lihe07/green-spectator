@@ -4,6 +4,11 @@ import Card from '../../../components/Card'
 export default (props) => {
   const show = () => props.id === props.current
 
+  function changeVisibility () {
+    const other = props.id === 0 ? 1 : 0
+    props.set(show() ? other : props.id)
+  }
+
   return (
     <Motion.div
       class="md:!h-[calc(50%-10px)]"
@@ -13,8 +18,8 @@ export default (props) => {
     >
       <Card class="w-full overflow-hidden h-full">
         <div
-          class="h-15 w-full flex items-center color-white px-3 box-border md:hidden block transition-300"
-          onClick={() => props.set(props.id)}
+          class="h-15 w-full flex items-center color-white px-3 box-border md:hidden block transition-300 cursor-pointer"
+          onClick={changeVisibility}
           classList={{
             'op-70': !show(),
             'op-100': show()
