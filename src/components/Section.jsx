@@ -1,7 +1,8 @@
 import { Motion } from '@motionone/solid'
-import { onMount, createSignal, splitProps } from 'solid-js'
+import { onMount, createSignal, splitProps, mergeProps } from 'solid-js'
 
-export default (props) => {
+export default (_props) => {
+  const props = mergeProps({ class: '' }, _props)
   const [local, others] = splitProps(props, ['animOnly', 'class'])
 
   const [enter, setEnter] = createSignal(false)
@@ -30,6 +31,7 @@ export default (props) => {
   onMount(() => {
     const root = document.getElementById('root')
     root.addEventListener('scroll', onScroll)
+    onScroll()
     return () => root.removeEventListener('scroll', onScroll)
   })
 

@@ -1,5 +1,5 @@
 import Section from '../../components/Section'
-import LongArticleBlock from './Articles/LongArticleBlock'
+import LongArticleBlock from '../../components/LongArticleBlock'
 import Title from '../../components/CenterTitle'
 
 import placeholder from '../../assets/images/ba.jpg'
