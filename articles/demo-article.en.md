@@ -1,6 +1,6 @@
 ---
 title: "Hello World"
-description: "Article Description"
+description: "Article Description, Lorem ipsum asdasdasdsadasdsadsadasdasd"
 orgnization:
     name: "United Nations"
     url: "https://www.un.org"
@@ -10,8 +10,6 @@ tags: ['Tag1', 'Tag2']
 cover: './demo-article/bg.jpg'
 date: 2019-01-01T00:00:00+08:00
 ---
-
-# Demo Title
 
 ## Demo Subtitle
 

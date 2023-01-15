@@ -1,15 +1,3 @@
-import { createResource } from 'solid-js'
-
-// const map = {
-//   'demo-article': {
-//     title: 'Article Title',
-//     description: 'Article Description',
-//     cover: 'https://picsum.photos/800/600',
-//     date: '2021-01-01',
-//     body: async () => await import('../../articles/demo-article.md')
-//   }
-// }
-
 import map from '../.map.js'
 
 export default ({ params }) => {
@@ -25,6 +13,11 @@ export default ({ params }) => {
         ...article
       }
     }
+  }
+
+  if (Object.keys(data).length === 0) {
+    // TODO: Redirect to 404 page
+    location.href = '/404'
   }
 
   return data

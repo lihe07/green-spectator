@@ -5,7 +5,7 @@ export default (_props) => {
   const props = mergeProps({ class: '' }, _props)
   const [local, others] = splitProps(props, ['animOnly', 'class'])
 
-  const [enter, setEnter] = createSignal(false)
+  const [enter, setEnter] = createSignal(true)
   let section
 
   function onScroll () {

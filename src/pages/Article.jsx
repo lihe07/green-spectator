@@ -21,11 +21,6 @@ export default () => {
         <section class="p-10 max-w-300 ma">
           <article>
             <h1>{localData().meta?.title}</h1>
-            <p>
-              For Debug:
-              <br /> Here is my metadata:
-            </p>
-            <pre>{JSON.stringify(localData(), null, 2)}</pre>
             <br />
           </article>
           <article>{markdown()}</article>

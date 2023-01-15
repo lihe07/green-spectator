@@ -19,16 +19,17 @@ export default () => {
 
   return (
     <Section>
-      {/* <h1 class="m0 text-center color-white text-10 tracking-wide md:text-15">
-        Articles
-      </h1> */}
       <Title
         title={t('index.articles.title')}
         description={t('index.articles.description')}
       />
       <For each={withOrg()}>
         {(item, index) => (
-          <LongArticleBlock {...item.meta} reverse={index() % 2} />
+          <LongArticleBlock
+            {...item.meta}
+            name={item.name}
+            reverse={index() % 2}
+          />
         )}
       </For>
       <ArticlesCarousel />

@@ -1,6 +1,6 @@
 ---
 title: "中文标题"
-description: "中文描述"
+description: "中文描述, Lorem ipsum asdasdsa dsad sajdiosajdioa"
 orgnization:
     name: "联合国"
     url: "https://www.un.org"
@@ -10,8 +10,6 @@ tags: ['Tag1', 'Tag2']
 cover: './demo-article/bg.jpg'
 date: 2019-01-01T00:00:00+08:00
 ---
-
-# Demo Title
 
 ## Demo Subtitle
 
