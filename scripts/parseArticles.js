@@ -38,6 +38,10 @@ async function copyRecursive (src, dest) {
   }
 }
 
+function replaceUrl (path) {
+  return path.replace('./', '/articles/')
+}
+
 // Parse articles from the articles folder
 // and generate a .map.json file with the article data
 
@@ -52,6 +56,11 @@ async function parseArticles () {
       const meta = yaml.loadAll(
         re.exec(await fs.readFile('./articles/' + file))[1]
       )[0]
+      meta.cover = replaceUrl(meta.cover)
+      if (meta.orgnization) {
+        meta.orgnization.logo = replaceUrl(meta.orgnization.logo)
+      }
+
       map += `
   {
     name: '${name}',

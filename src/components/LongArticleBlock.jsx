@@ -14,15 +14,16 @@ export default (props) => {
           style={{ 'background-image': `url(${props.cover})` }}
         />
         <div class="md:w-50% w-full md:h-full color-white pa-10 box-border">
-          <p class="text-5 op-90 m0">
-            <span>:ORG:</span>
-            <span class="ml-2">Organization Name</span>
+          <p class="text-5 op-90 m0 flex items-center">
+            <img
+              src={props.orgnization.logo}
+              alt={props.orgnization.name}
+              class="w-7 h-7"
+            />
+            <span class="ml-2">{props.orgnization.name}</span>
           </p>
-          <h1 class="text-8 my-4 tracking-wide">Article TITLE</h1>
-          <p class="text-5 m-0 op-70 leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            saepe minima?
-          </p>
+          <h1 class="text-8 my-4 tracking-wide">{props.title}</h1>
+          <p class="text-5 m-0 op-70 leading-relaxed">{props.description}</p>
         </div>
       </div>
     </Section>

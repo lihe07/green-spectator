@@ -1,6 +1,10 @@
 ---
 title: "中文标题"
 description: "中文描述"
+orgnization:
+    name: "联合国"
+    url: "https://www.un.org"
+    logo: "./demo-article/org-icon.svg"
 language: "zh"
 tags: ['Tag1', 'Tag2']
 cover: './demo-article/bg.jpg'
