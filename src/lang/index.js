@@ -13,6 +13,13 @@ export default {
       articles: {
         title: '文章',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      about: {
+        title: '关于我们',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      footer: {
+        otherOrgs: '其他组织'
       }
     },
     otherName: 'English'
@@ -31,6 +38,13 @@ export default {
       articles: {
         title: 'Articles',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      about: {
+        title: 'About Us',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      footer: {
+        otherOrgs: 'Other Organizations'
       }
     },
     otherName: '中文'

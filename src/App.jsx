@@ -3,6 +3,7 @@ import routes from './routes'
 import { useIsRouting, useBeforeLeave, useRoutes } from '@solidjs/router'
 import Header from './components/Header'
 import { AppContextProvider } from './AppContext'
+import Footer from './pages/Footer'
 
 export default () => {
   const Routes = useRoutes(routes())
@@ -31,13 +32,14 @@ export default () => {
       <div class="dark:bg-true-gray-9 light:bg-teal-8 transition-colors-300 min-h-screen font-sans">
         <Header />
         <main
-          class="transition-opacity-150"
+          class="transition-opacity-150 min-h-screen"
           classList={{ 'op-0': transition() }}
         >
           <Suspense>
             <Routes />
           </Suspense>
         </main>
+        <Footer />
       </div>
     </AppContextProvider>
   )

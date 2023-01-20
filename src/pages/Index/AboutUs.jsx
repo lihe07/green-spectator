@@ -1,11 +1,52 @@
+import { For } from 'solid-js'
 import background from '../../assets/images/ba.jpg'
 import Section from '../../components/Section'
 import AnimatedWave from './AnimatedWave'
+import CenterTitle from '../../components/CenterTitle'
+import { useI18n } from '@solid-primitives/i18n'
+
+const people = [
+  {
+    name: 'Jiachuan Wang',
+    job: 'Leader',
+    avatar:
+      'https://lms.d.zhan.com/zhanlms/addon_homework/2022/10/8010164634a551178966/avatar.jpg'
+  },
+  {
+    name: 'He Li',
+    job: 'Website Developer',
+    avatar:
+      'https://lms.d.zhan.com/zhanlms/addon_homework/2022/10/8010164634a551178966/avatar.jpg'
+  },
+  {
+    name: 'Kevin Zhao',
+    job: 'Designer',
+    avatar:
+      'https://lms.d.zhan.com/zhanlms/addon_homework/2022/10/8010164634a551178966/avatar.jpg'
+  },
+  {
+    name: 'Jitong Li',
+    job: 'Writer',
+    avatar:
+      'https://lms.d.zhan.com/zhanlms/addon_homework/2022/10/8010164634a551178966/avatar.jpg'
+  }
+]
+
+const Avatar = (props) => {
+  return (
+    <div class="text-center color-white">
+      <img src={props.avatar} alt={props.name} class="w-40 h-40 rounded-10" />
+      <h2 class="mb-0">{props.name}</h2>
+      <p class="text-6 mt-0 op-80 color-sky-3">{props.job}</p>
+    </div>
+  )
+}
 
 export default () => {
+  const t = useI18n()[0]
   return (
     <div
-      class="bg-cover bg-center h-200"
+      class="bg-cover bg-center"
       style={{
         'background-image': `url(${background})`
       }}
@@ -13,15 +54,17 @@ export default () => {
       <div class="bg-black bg-op-50 h-full">
         <AnimatedWave reverse={true} type="asScroll" />
         <Section>
-          <h1 class="color-white md:text-15 text-10 text-center mt--10">
-            About US
-          </h1>
-          <p class="color-white">
-            TODO Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
-            quisquam quidem fugit ullam officiis porro, ducimus et! Molestias
-            fugit voluptatum sequi inventore, aperiam tenetur obcaecati dolore
-            temporibus adipisci, rerum eius.
-          </p>
+          <div class="mt--15 mb-15">
+            <CenterTitle
+              title={t('index.about.title')}
+              description={t('index.about.description')}
+            />
+          </div>
+          <Section animOnly={true}>
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-5 mb-10">
+              <For each={people}>{(person) => <Avatar {...person} />}</For>
+            </div>
+          </Section>
         </Section>
       </div>
     </div>

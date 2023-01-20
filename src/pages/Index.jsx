@@ -3,7 +3,7 @@ import Ranking from './Index/Ranking'
 import AnimatedWave from './Index/AnimatedWave'
 import TakeAction from './Index/TakeAction'
 import Articles from './Index/Articles'
-import Footer from './Index/Footer'
+import Footer from './Footer'
 
 import Section from '../components/Section'
 // import { onMount } from 'solid-js'
@@ -27,7 +27,6 @@ export default () => {
         </div>
       </Section>
       <AboutUs />
-      <Footer />
     </>
   )
 }

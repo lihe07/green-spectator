@@ -15,7 +15,7 @@ render(
 
 // DBG
 
-const target = window.innerHeight * 3.3
+const target = window.innerHeight * 4.5
 function checkAndScroll () {
   if (!document.getElementById('root')) {
     window.onload = checkAndScroll
