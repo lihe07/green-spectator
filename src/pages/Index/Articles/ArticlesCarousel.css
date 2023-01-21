@@ -1,0 +1,13 @@
+.swiper {
+  overflow: visible !important;
+}
+
+.swiper-cover {
+  width: 2.5rem;
+}
+
+@media screen and (min-width: 75rem) {
+  .swiper-cover {
+    width: calc(50vw - 37.5rem);
+  }
+}

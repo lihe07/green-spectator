@@ -26,13 +26,13 @@ const OrgCard = (props) => {
 export default () => {
   const t = useI18n()[0]
   return (
-    <footer class="w-full h-100 light:bg-teal-7 dark:bg-true-gray-8 overflow-hidden transition">
-      <Section class="flex items-center h-full box-border">
+    <footer class="w-full md:h-100 h-max light:bg-teal-7 dark:bg-true-gray-8 overflow-hidden transition">
+      <Section class="flex items-center h-full box-border md:flex-row flex-col">
         <div class="flex items-center gap-5 color-white">
           <img src={logo} alt="" srcset="" class="w-20 h-20" />
           <p class="text-7">Green Spectator</p>
         </div>
-        <div class="dark:bg-true-gray-7 light:bg-teal-6 w-1 h-full mx-10 rounded transition" />
+        <div class="dark:bg-true-gray-7 light:bg-teal-6 md:w-1 w-full md:h-full md:mx-10 my-5 rounded transition" />
         <div class="flex-1">
           <div class="dark:bg-true-gray-7 light:bg-teal-6 transition rounded-10 p-10">
             <h2 class="color-white mt-0 mb-7">{t('index.footer.otherOrgs')}</h2>

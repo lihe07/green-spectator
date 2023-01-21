@@ -61,7 +61,7 @@ const Category = (props) => {
   const { locale } = useI18n()[1]
   return (
     <li
-      class="dark:bg-true-gray-8 light:bg-teal-7 hover:op-100 rounded-xl h-10 leading-9.5 px-3 my-3 transition cursor-pointer outline-2 outline-solid dark:outline-true-gray-8 light:outline-teal-7"
+      class="dark:bg-true-gray-8 light:bg-teal-7 hover:op-100 rounded-xl h-10 min-w-10 md:text-left text-center leading-9.5 px-3 my-3 transition cursor-pointer outline-2 outline-solid dark:outline-true-gray-8 light:outline-teal-7"
       classList={{ '!bg-op-0 op-80': !props.active }}
       onClick={() => props.onClick()}
     >
@@ -70,29 +70,35 @@ const Category = (props) => {
   )
 }
 
+const Input = (props) => {
+  return (
+    <input
+      type="text"
+      placeholder="Search"
+      class="dark:bg-true-gray-8 dark:outline-true-gray-8 light:bg-teal-7 light:outline-teal-7 color-white border-none rounded-xl h-10 w-full outline-solid outline-2 op-80 hover:op-100 dark:focus:outline-true-gray-7 light:focus:outline-teal-6 focus:bg-op-0 focus:op-100 transition-all px-3 box-border tracking-wide placeholder-white"
+      onInput={(e) =>
+        props.setCategory({
+          name: {
+            en: 'Search results',
+            zh: '搜索结果'
+          },
+          description: {
+            en: `Search results for "${e.target.value}"`,
+            zh: `搜索结果 "${e.target.value}"`
+          },
+          id: -1,
+          value: e.target.value
+        })
+      }
+    />
+  )
+}
+
 const Left = (props) => {
   return (
     <aside class="border-r border-white w-70 border-r-solid border-op-10 md:block hidden">
       <div class="sticky top-30 px-10 color-white">
-        <input
-          type="text"
-          placeholder="Search"
-          class="dark:bg-true-gray-8 dark:outline-true-gray-8 light:bg-teal-7 light:outline-teal-7 color-white border-none rounded-xl h-10 w-full outline-solid outline-2 op-80 hover:op-100 dark:focus:outline-true-gray-7 light:focus:outline-teal-6 focus:bg-op-0 focus:op-100 transition-all px-3 box-border tracking-wide placeholder-white"
-          onInput={(e) =>
-            props.setCategory({
-              name: {
-                en: 'Search results',
-                zh: '搜索结果'
-              },
-              description: {
-                en: `Search results for "${e.target.value}"`,
-                zh: `搜索结果 "${e.target.value}"`
-              },
-              id: -1,
-              value: e.target.value
-            })
-          }
-        />
+        <Input setCategory={props.setCategory} />
         <ul class="list-none p0 mt-7">
           <For each={categories}>
             {(category) => (
@@ -120,6 +126,21 @@ const Right = (props) => {
         description={props.category.description[locale()]}
       />
       <div class="px-10">
+        <div class="md:hidden block mt-5 mb--10">
+          <ul class="list-none p0 m0 color-white flex gap-5">
+            <For each={categories}>
+              {(category) => (
+                <Category
+                  {...category}
+                  active={props.category.id === category.id}
+                  onClick={() => props.setCategory(category)}
+                />
+              )}
+            </For>
+          </ul>
+          <Input setCategory={props.setCategory} />
+        </div>
+
         <For each={articles()}>
           {(item, index) => (
             <LongArticleBlock
@@ -137,11 +158,11 @@ const Right = (props) => {
 export default () => {
   const [category, setCategory] = createSignal(categories[0])
   return (
-    <div class="pt-10">
-      <Section class="pb-0">
+    <div class="pt-20">
+      <Section class="!p-0">
         <div class="flex">
           <Left category={category()} setCategory={setCategory} />
-          <Right category={category()} />
+          <Right category={category()} setCategory={setCategory} />
         </div>
       </Section>
     </div>

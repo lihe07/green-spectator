@@ -35,7 +35,11 @@ const people = [
 const Avatar = (props) => {
   return (
     <div class="text-center color-white">
-      <img src={props.avatar} alt={props.name} class="w-40 h-40 rounded-10" />
+      <img
+        src={props.avatar}
+        alt={props.name}
+        class="md:w-40 md:h-40 w-30 h-30 rounded-10"
+      />
       <h2 class="mb-0">{props.name}</h2>
       <p class="text-6 mt-0 op-80 color-sky-3">{props.job}</p>
     </div>
@@ -46,7 +50,7 @@ export default () => {
   const t = useI18n()[0]
   return (
     <div
-      class="bg-cover bg-center"
+      class="bg-cover bg-center mt--1"
       style={{
         'background-image': `url(${background})`
       }}
@@ -54,7 +58,7 @@ export default () => {
       <div class="bg-black bg-op-50 h-full">
         <AnimatedWave reverse={true} type="asScroll" />
         <Section>
-          <div class="mt--15 mb-15">
+          <div class="md:mt--15 mt--5 mb-15">
             <CenterTitle
               title={t('index.about.title')}
               description={t('index.about.description')}
