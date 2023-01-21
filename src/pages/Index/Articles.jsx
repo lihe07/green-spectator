@@ -3,7 +3,6 @@ import Section from '../../components/Section'
 import LongArticleBlock from '../../components/LongArticleBlock'
 import Title from '../../components/CenterTitle'
 
-import placeholder from '../../assets/images/ba.jpg'
 import ArticlesCarousel from './Articles/ArticlesCarousel'
 
 import map from '../../.map.json'

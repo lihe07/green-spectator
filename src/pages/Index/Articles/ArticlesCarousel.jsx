@@ -5,7 +5,7 @@ import './ArticlesCarousel.css'
 import NarrowArticleBlock from './NarrowArticleBlock'
 
 import cover from '../../../assets/images/ba.jpg'
-import { For, Show } from 'solid-js'
+import { For } from 'solid-js'
 import Section from '../../../components/Section'
 const articles = [
   {

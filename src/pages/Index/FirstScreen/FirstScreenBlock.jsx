@@ -1,5 +1,4 @@
 import { Motion } from '@motionone/solid'
-import { createEffect, createSignal, Show } from 'solid-js'
 
 const colors = [
   'bg-gradient-from-sky-4 bg-gradient-to-teal-4',
