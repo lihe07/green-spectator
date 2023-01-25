@@ -61,6 +61,15 @@ async function parseArticles () {
         meta.orgnization.logo = replaceUrl(meta.orgnization.logo)
       }
 
+      // Check meta must have:
+      // title, language, date, cover
+
+      for (const key of ['title', 'language', 'date', 'cover']) {
+        if (!meta[key]) {
+          throw new Error(`Meta must have ${key} in ${file}`)
+        }
+      }
+
       map += `
   {
     name: '${name}',

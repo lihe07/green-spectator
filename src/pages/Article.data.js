@@ -20,5 +20,7 @@ export default ({ params }) => {
     location.href = '/404'
   }
 
+  console.log('Router data: ', data)
+
   return data
 }
