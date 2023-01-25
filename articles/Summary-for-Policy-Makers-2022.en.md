@@ -1,8 +1,8 @@
 ---
 title: Summary for Policy Makers 2022
-description: Latest edition from ipcc (IPCC Sixth Assessment Report,Climate Change 2022: Impacts, Adaptation and Vulnerability)
+description: "Latest edition from ipcc (IPCC Sixth Assessment Report, Climate Change 2022: Impacts, Adaptation and Vulnerability)"
 tags: ['Inter-government Organization Articles']
-cover:"./IPCC-Summary for Policymakers-2022/IPCC_AR6_cover.jpeg)"
+cover: ./summary-for-policy-makers-2022/IPCC_AR6_cover.jpeg
 date: 2023-01-21-T06:30+08:00
 ---
 
@@ -10,7 +10,7 @@ Observed Impacts from Climate Change
 
 Human-induced climate change has caused the rise in weather and climate extremes which has led to some irreversible impacts as natural and human systems are pushed beyond their ability to adapt as shown below.
 
-![IPCC_AR6_WGII_FigureSPM2](C:./IPCC-Summary-for-Policymakers-2022/IPCC_AR6_WGII_FigureSPM2.png)
+![IPCC_AR6_WGII_FigureSPM2](./summary-for-policy-makers-2022/IPCC_AR6_WGII_FigureSPM2.png)
 
 
 
@@ -28,7 +28,7 @@ Near term risks of global warming include increases in climate hazards accompani
 
 
 
-![IPCC_AR6_WGII_FigureSPM3abcde](C:./IPCC-Summary-for-Policymakers-2022/IPCC_AR6_WGII_FigureSPM3abcde.png)
+![IPCC_AR6_WGII_FigureSPM3abcde](./summary-for-policy-makers-2022/IPCC_AR6_WGII_FigureSPM3abcde.png)
 
 
 
@@ -54,9 +54,9 @@ The feasibility of implementing adaptation options in the near-term differs acro
 
 
 
-![solutions](C:./IPCC-Summary-for-Policymakers-2022/solutions.png)
+![solutions](./summary-for-policy-makers-2022/solutions.png)
 
-![Solution2](C:./IPCC-Summary-for-Policymakers-2022/Solution2.png)
+![Solution2](./summary-for-policy-makers-2022/Solution2.png)
 
 Limits to Adaptation
 
@@ -105,4 +105,4 @@ change poses to them and their roles in adaptation and mitigation. Recent analys
 Achieving Climate Resilient Development
 Past and current development trends (past emissions, development and climate change) have not advanced global climate resilient development. Climate resilient development prospects are increasingly limited if current greenhouse gas emissions do not rapidly decline, especially if 1.5°C global warming is exceeded in the near-term. These prospects are constrained by past development, emissions and climate change, and enabled by inclusive governance, adequate and appropriate human and technological resources, information, capacities and finance.
 
-![IPCC_AR6_WGII_FigureSPM5](C:./IPCC-Summary-for-Policymakers-2022/IPCC_AR6_WGII_FigureSPM5.png)
+![IPCC_AR6_WGII_FigureSPM5](./summary-for-policy-makers-2022/IPCC_AR6_WGII_FigureSPM5.png)

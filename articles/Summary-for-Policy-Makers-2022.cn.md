@@ -2,7 +2,7 @@
 title: ipcc决策者摘要-2022
 description: 本文章是ipcc最新研究报告（ipcc第六次评估报告，气候变化2022：影响、适应和脆弱性）
 tags: ['Inter-government Organization Articles']
-cover: .\IPCC-Summary-for-Policymakers-2022\IPCC_AR6_cover.jpeg
+cover: ./summary-for-policy-makers-2022/IPCC_AR6_cover.jpeg
 date: 2023-1-22-T06:30+08:00
 ---
 
@@ -18,7 +18,7 @@ date: 2023-1-22-T06:30+08:00
 
 人为导致的全球变暖导致极端天气气候增多。这些极端气候将生态系统和人类社会推到了承载力的极限，造成了不可逆转的影响。
 
-![IPCC_AR6_WGII_FigureSPM2](C:./IPCC-Summary-for-Policymakers-2022/IPCC_AR6_WGII_FigureSPM2.png)
+![IPCC_AR6_WGII_FigureSPM2](./summary-for-policy-makers-2022/IPCC_AR6_WGII_FigureSPM2.png)
 
 生态系统和社会的脆弱性的暴露
 
@@ -32,11 +32,11 @@ date: 2023-1-22-T06:30+08:00
 
 
 
-![IPCC_AR6_WGII_FigureSPM3abcde](C:./IPCC-Summary-for-Policymakers-2022/IPCC_AR6_WGII_FigureSPM3abcde.png)
+![IPCC_AR6_WGII_FigureSPM3abcde](./summary-for-policy-makers-2022/IPCC_AR6_WGII_FigureSPM3abcde.png)
 
 
 
-![IPCC_AR6_WGII_FigureSPM3f](C:./IPCC-Summary-for-Policymakers-2022/IPCC_AR6_WGII_FigureSPM3f.png)
+![IPCC_AR6_WGII_FigureSPM3f](./summary-for-policy-makers-2022/IPCC_AR6_WGII_FigureSPM3f.png)
 
 复杂、叠加和级联的风险
 
@@ -54,9 +54,9 @@ date: 2023-1-22-T06:30+08:00
 
 实施对应近期风险的措施的可行性取决于特定区域的具体情况。随着全球变暖的严重，对应措施效果会随着降低。综合的，多维度的解决方案可以增加对应措施的可行性和效益。
 
-![solutions](C:./IPCC-Summary-for-Policymakers-2022/solutions.png)
+![solutions](./summary-for-policy-makers-2022/solutions.png)
 
-![Solution2](C:./IPCC-Summary-for-Policymakers-2022/Solution2.png)
+![Solution2](./summary-for-policy-makers-2022/Solution2.png)
 
 对应措施的局限性
 
@@ -106,4 +106,4 @@ date: 2023-1-22-T06:30+08:00
 
 过去和目前的发展趋（过去排放、发展和气候变化）势没有增强全球气候变化的适应能力。如果目前温室气体排放不快速降低，尤其是如果近期气温升高超过1.5℃，气候适应力的建设展望会收到很大的限制。限制这些展望的要素包括过去发展、排放和气候变化；全面的管理，正确的人力资源、科技资源、信息、和资金的使用可以实现这些展望。
 
-![IPCC_AR6_WGII_FigureSPM5](C:./IPCC-Summary-for-Policymakers-2022/IPCC_AR6_WGII_FigureSPM5.png)
+![IPCC_AR6_WGII_FigureSPM5](./summary-for-policy-makers-2022/IPCC_AR6_WGII_FigureSPM5.png)
