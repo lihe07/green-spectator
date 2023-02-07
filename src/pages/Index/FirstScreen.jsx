@@ -77,7 +77,7 @@ export default () => {
         >
           <img class="w-20 h-20 mr-5 object-contain" src={logo} />
           <div>
-            <h2 class="m-y-0 m-b-3">Green Spectator</h2>
+            <h2 class="m-y-0 m-b-3">CarbInsight</h2>
             <p class="op-80 m-y-0">Site is loading...</p>
           </div>
         </div>

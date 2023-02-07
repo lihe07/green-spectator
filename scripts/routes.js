@@ -8,8 +8,8 @@ export default async () => {
         keywordsZh: '首页, 示例',
         keywordsEn: 'home, demo'
       },
-      titleZh: 'Green Spectator - 首页',
-      titleEn: 'Green Spectator - Home'
+      titleZh: 'CarbInsight - 首页',
+      titleEn: 'CarbInsight - Home'
     },
     {
       path: '/articles',
@@ -19,8 +19,8 @@ export default async () => {
         keywordsZh: '文章列表, 示例',
         keywordsEn: 'articles, demo'
       },
-      titleZh: 'Green Spectator - 文章',
-      titleEn: 'Green Spectator - Articles'
+      titleZh: 'CarbInsight - 文章',
+      titleEn: 'CarbInsight - Articles'
     },
     {
       path: '/404',
@@ -30,8 +30,8 @@ export default async () => {
         keywordsZh: '404, 示例',
         keywordsEn: '404, demo'
       },
-      titleZh: 'Green Spectator - 404',
-      titleEn: 'Green Spectator - 404'
+      titleZh: 'CarbInsight - 404',
+      titleEn: 'CarbInsight - 404'
     }
   ]
   const articles = {}
@@ -44,12 +44,12 @@ export default async () => {
         articles[article.name].meta.descriptionZh = article.meta.description
         articles[article.name].meta.keywordsZh = article.meta.tags.join(', ')
         articles[article.name].titleZh =
-          'Green Spectator - ' + article.meta.title
+          'CarbInsight - ' + article.meta.title
       } else {
         articles[article.name].meta.descriptionEn = article.meta.description
         articles[article.name].meta.keywordsEn = article.meta.tags.join(', ')
         articles[article.name].titleEn =
-          'Green Spectator - ' + article.meta.title
+          'CarbInsight - ' + article.meta.title
       }
     } else {
       articles[article.name] = {
@@ -60,8 +60,8 @@ export default async () => {
           keywordsZh: article.meta.tags.join(', '),
           keywordsEn: article.meta.tags.join(', ')
         },
-        titleZh: 'Green Spectator - ' + article.meta.title,
-        titleEn: 'Green Spectator - ' + article.meta.title
+        titleZh: 'CarbInsight - ' + article.meta.title,
+        titleEn: 'CarbInsight - ' + article.meta.title
       }
     }
   }
