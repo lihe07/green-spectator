@@ -51,7 +51,7 @@ export default () => {
           >
             <img class="w-10 h-10" src={logo} alt="Logo" />
             <span class="ml-3 color-white md:block hidden mb-0.5">
-              CarbInsight
+              Carbinsight
             </span>
           </A>
           <div class="ml-20 md:flex hidden max-w-100% md:pointer-events-auto pointer-events-none">

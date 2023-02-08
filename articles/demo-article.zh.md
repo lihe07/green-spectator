@@ -2,7 +2,7 @@
 title: "中文标题"
 description: "中文描述, Lorem ipsum asdasdsa dsad sajdiosajdioa"
 orgnization:
-    name: "联合国"
+    name: "组织名称"
     url: "https://www.un.org"
     logo: "./demo-article/org-icon.svg"
 language: "zh"

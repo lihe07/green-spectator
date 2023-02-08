@@ -2,7 +2,7 @@
 title: "Hello World"
 description: "Article Description, Lorem ipsum asdasdasdsadasdsadsadasdasd"
 orgnization:
-    name: "United Nations"
+    name: "Org Name"
     url: "https://www.un.org"
     logo: "./demo-article/org-icon.svg"
 language: "en"

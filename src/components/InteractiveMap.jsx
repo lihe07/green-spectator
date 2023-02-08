@@ -15,10 +15,18 @@ async function getGeoJson (level) {
   return data.features
 }
 
-function coloring (g, dark) {
+function coloring (g, dark, data, numberToColor) {
   if (!g) return
   g.selectAll('path')
-    .attr('fill', dark ? '#525252' : '#0d9488')
+    // .attr('fill', dark ? '#525252' : '#0d9488')
+    .attr('fill', d => {
+      const code = d.properties.code
+      if (!data[code]) {
+        return dark ? '#525252' : '#0d9488'
+      }
+      // console.log("Rendering: ", code, data[code], numberToColor(data[code]?.Total))
+      return numberToColor(data[code]?.Total, dark)
+    })
     .attr('stroke', dark ? '#262626' : '#115e59')
     .attr('stroke-width', 0.5)
     .attr('opacity', 0.8)
@@ -119,7 +127,7 @@ export default (props) => {
     new ResizeObserver(() =>
       resize(container, map.svg, map.g, transform)
     ).observe(container)
-    coloring(map.g, dark())
+    coloring(map.g, dark(), props.data, props.numberToColor)
   })
 
   // Preparation: loading data
@@ -131,7 +139,7 @@ export default (props) => {
   let map
   let transform
 
-  createEffect(() => coloring(map?.g, dark())) // Theme
+  createEffect(() => coloring(map?.g, dark(), props.data, props.numberToColor)) // Theme
 
   function onClick (ele) {
     if (props.currentLevel === ele?.id) {

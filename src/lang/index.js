@@ -1,3 +1,6 @@
+import codesZh from "./codes.zh"
+import codesEn from "./codes.en"
+
 export default {
   zh: {
     index: {
@@ -22,6 +25,7 @@ export default {
         otherOrgs: '其他组织'
       }
     },
+    codes: codesZh,
     otherName: 'English'
   },
   en: {
@@ -47,6 +51,7 @@ export default {
         otherOrgs: 'Other Organizations'
       }
     },
+    codes: codesEn,
     otherName: '中文'
   }
 }

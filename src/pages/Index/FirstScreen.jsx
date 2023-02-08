@@ -33,7 +33,8 @@ export default () => {
   const [isPlaying, setIsPlaying] = createSignal(false)
   let video
   // let isFirst = true
-  const [isFirst, setIsFirst] = createSignal(true)
+  // const [isFirst, setIsFirst] = createSignal(true)
+  const [isFirst, setIsFirst] = createSignal(false)
 
   const videoCache = {}
 
@@ -77,7 +78,7 @@ export default () => {
         >
           <img class="w-20 h-20 mr-5 object-contain" src={logo} />
           <div>
-            <h2 class="m-y-0 m-b-3">CarbInsight</h2>
+            <h2 class="m-y-0 m-b-3">Carbinsight</h2>
             <p class="op-80 m-y-0">Site is loading...</p>
           </div>
         </div>

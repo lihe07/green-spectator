@@ -30,7 +30,7 @@ export default () => {
       <Section class="flex items-center h-full box-border md:flex-row flex-col">
         <div class="flex items-center gap-5 color-white">
           <img src={logo} alt="" srcset="" class="w-20 h-20" />
-          <p class="text-7">CarbInsight</p>
+          <p class="text-7">Carbinsight</p>
         </div>
         <div class="dark:bg-true-gray-7 light:bg-teal-6 md:w-1 w-full md:h-full md:mx-10 my-5 rounded transition" />
         <div class="flex-1">
@@ -45,7 +45,7 @@ export default () => {
             <a class="color-white" href="https://beian.miit.gov.cn/">
               京ICP备2021000000号-1
             </a>
-            \ | @2023 CarbInsight
+            \ | @2023 Carbinsight
           </p>
         </div>
       </Section>

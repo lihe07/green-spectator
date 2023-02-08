@@ -8,8 +8,8 @@ export default async () => {
         keywordsZh: '首页, 示例',
         keywordsEn: 'home, demo'
       },
-      titleZh: 'CarbInsight - 首页',
-      titleEn: 'CarbInsight - Home'
+      titleZh: 'Carbinsight - 首页',
+      titleEn: 'Carbinsight - Home'
     },
     {
       path: '/articles',
@@ -19,8 +19,8 @@ export default async () => {
         keywordsZh: '文章列表, 示例',
         keywordsEn: 'articles, demo'
       },
-      titleZh: 'CarbInsight - 文章',
-      titleEn: 'CarbInsight - Articles'
+      titleZh: 'Carbinsight - 文章',
+      titleEn: 'Carbinsight - Articles'
     },
     {
       path: '/404',
@@ -30,8 +30,8 @@ export default async () => {
         keywordsZh: '404, 示例',
         keywordsEn: '404, demo'
       },
-      titleZh: 'CarbInsight - 404',
-      titleEn: 'CarbInsight - 404'
+      titleZh: 'Carbinsight - 404',
+      titleEn: 'Carbinsight - 404'
     }
   ]
   const articles = {}
@@ -44,12 +44,12 @@ export default async () => {
         articles[article.name].meta.descriptionZh = article.meta.description
         articles[article.name].meta.keywordsZh = article.meta.tags.join(', ')
         articles[article.name].titleZh =
-          'CarbInsight - ' + article.meta.title
+          'Carbinsight - ' + article.meta.title
       } else {
         articles[article.name].meta.descriptionEn = article.meta.description
         articles[article.name].meta.keywordsEn = article.meta.tags.join(', ')
         articles[article.name].titleEn =
-          'CarbInsight - ' + article.meta.title
+          'Carbinsight - ' + article.meta.title
       }
     } else {
       articles[article.name] = {
@@ -60,8 +60,8 @@ export default async () => {
           keywordsZh: article.meta.tags.join(', '),
           keywordsEn: article.meta.tags.join(', ')
         },
-        titleZh: 'CarbInsight - ' + article.meta.title,
-        titleEn: 'CarbInsight - ' + article.meta.title
+        titleZh: 'Carbinsight - ' + article.meta.title,
+        titleEn: 'Carbinsight - ' + article.meta.title
       }
     }
   }

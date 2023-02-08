@@ -36,21 +36,25 @@ async function fetcher () {
       if (key === 'Year' || key === 'Code') continue
       const num = parseFloat(row[key])
       data[year][region][key] = num
-      if (key !== 'Total') {
+      if (key === 'Total') {
         maxOfYear[year] = Math.max(maxOfYear[year] || num, num)
         minOfYear[year] = Math.min(minOfYear[year] || num, num)
       }
     }
   }
 
+  console.log("Max of year: ", maxOfYear)
+  console.log("Min of year: ", minOfYear)
+
   return { data, maxOfYear, minOfYear }
 }
 
-function numberToHexColor (n, max, min) {
+
+function numberToColorRaw (n, dark, max, min) {
   const range = max - min
   const percent = (n - min) / range
   const hue = (1 - percent) * 120
-  return `hsl(${hue}, 100%, 50%)`
+  return dark ? `hsla(${hue}, 50%, 60%, 0.5)` : `hsla(${hue}, 50%, 60%, 0.8)`
 }
 
 function sort (data) {
@@ -76,7 +80,7 @@ export default () => {
 
   const maxOfYear = () => res().maxOfYear[currentYear()]
   const minOfYear = () => res().minOfYear[currentYear()]
-  const numberToHexColor = (n) => numberToHexColor(n, maxOfYear(), minOfYear())
+  const numberToColor = (n, dark) => numberToColorRaw(n, dark, maxOfYear(), minOfYear())
 
   const sortedData = createMemo(() => sort(res()?.data[currentYear()]))
 
@@ -100,7 +104,7 @@ export default () => {
               currentLevel={currentLevel()}
               onChangeLevel={setCurrentLevel}
               data={res().data[currentYear()]}
-              numberToHexColor={numberToHexColor}
+              numberToColor={numberToColor}
             />
           </Card>
 
