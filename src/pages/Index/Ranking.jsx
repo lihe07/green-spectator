@@ -43,12 +43,11 @@ async function fetcher () {
     }
   }
 
-  console.log("Max of year: ", maxOfYear)
-  console.log("Min of year: ", minOfYear)
+  console.log('Max of year: ', maxOfYear)
+  console.log('Min of year: ', minOfYear)
 
   return { data, maxOfYear, minOfYear }
 }
-
 
 function numberToColorRaw (n, dark, max, min) {
   const range = max - min
@@ -80,7 +79,8 @@ export default () => {
 
   const maxOfYear = () => res().maxOfYear[currentYear()]
   const minOfYear = () => res().minOfYear[currentYear()]
-  const numberToColor = (n, dark) => numberToColorRaw(n, dark, maxOfYear(), minOfYear())
+  const numberToColor = (n, dark) =>
+    numberToColorRaw(n, dark, maxOfYear(), minOfYear())
 
   const sortedData = createMemo(() => sort(res()?.data[currentYear()]))
 

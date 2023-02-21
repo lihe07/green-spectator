@@ -19,7 +19,7 @@ function coloring (g, dark, data, numberToColor) {
   if (!g) return
   g.selectAll('path')
     // .attr('fill', dark ? '#525252' : '#0d9488')
-    .attr('fill', d => {
+    .attr('fill', (d) => {
       const code = d.properties.code
       if (!data[code]) {
         return dark ? '#525252' : '#0d9488'

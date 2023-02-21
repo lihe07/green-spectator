@@ -1,5 +1,5 @@
-import codesZh from "./codes.zh"
-import codesEn from "./codes.en"
+import codesZh from './codes.zh'
+import codesEn from './codes.en'
 
 export default {
   zh: {
